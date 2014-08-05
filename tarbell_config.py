@@ -11,7 +11,7 @@ NAME = "geografiadedolor"
 TITLE = "Geografia de dolor"
 
 # Google spreadsheet key
-SPREADSHEET_KEY = "117-hc2v8NGBTH9G7KGOConXePCTCNXb7otVE92Z9g1U"
+SPREADSHEET_KEY = "1_Duj8Upko57n-AXHFQCa_vy3zaJx19hjvnwPuX5otJo"
 
 # Exclude these files from publication
 EXCLUDES = ["*.md", "requirements.txt"]
