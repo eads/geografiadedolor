@@ -1,0 +1,35 @@
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+
+#index {
+  position: absolute;
+  width: 100%;
+  background-image: url(../img/map_home.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.marker {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+.marker-inner {
+  margin-left: 2px;
+  margin-top: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+}
+

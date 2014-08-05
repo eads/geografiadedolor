@@ -1,12 +1,27 @@
-{% extends "_base.html" %}
+{% extends "_geografia_base.html" %}
 
 {% block content %}
-<div class="container">
-  <div class="jumbotron">
-    <h1>Welcome to your new project!</h1>
-    <p>Replace this message with your own content in <code>{{ PROJECT_PATH }}/index.html</code>.</p>
-    <p>Learn more on the <a href="_example.html">example page</a>.</p>
-  </div>
+<div id="index">
+  {% for marker in markers %}
+  	<div class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
+     <div class="marker-inner"></div>
+    </div>
+	{% endfor %}
 </div>
 {% endblock content %}
 
+{% block scripts %}
+<script>
+var sizeMap = function() {
+  var width = $('#index').width();
+  var aspect = 0.5625;
+  $('#index').height(width * aspect)
+}
+
+$(document).ready(function() {
+  sizeMap();
+  $(window).on('resize', sizeMap);
+})
+
+</script>
+{% endblock %}
