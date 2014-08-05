@@ -1,7 +1,15 @@
 {% extends "_geografia_base.html" %}
 
 {% block content %}
-<div id="index">
+<div id="index-map">
+  <div id="index-nav">
+<!--     <h1>
+      <span id="line1">Geografia del</span>
+      <span id="line2">Dolor</span>
+    </h1> -->
+    <h1>TEST</h1>
+  </div>
+
   {% for marker in markers %}
   	<div class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
      <div class="marker-inner"></div>
@@ -12,13 +20,28 @@
 
 {% block scripts %}
 <script>
+
+// Use natural aspect ratio of map to set height and maintain
+// proper marker size
 var sizeMap = function() {
-  var width = $('#index').width();
-  var aspect = 0.5625;
-  $('#index').height(width * aspect)
+  var width = $('#index-map').width(),
+      windowHeight = $(window).height(),
+      aspect = 0.5625,
+      height = width * aspect;
+
+  $('#index-map').css({
+    'height': height + 'px',
+    'top': ((windowHeight / 2) - (height / 2)) + 'px',
+  });
 }
 
 $(document).ready(function() {
+  // Fit the headline text
+
+  $("h1").fitText(1.2);
+  // $("#line2").fitText();
+
+  // Size map on init, also resize
   sizeMap();
   $(window).on('resize', sizeMap);
 })

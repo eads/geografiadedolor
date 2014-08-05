@@ -11,6 +11,10 @@
 {% block nav %}{% endblock %}
 {% block footer %}{% endblock %}
 
+{% block library_scripts %}
+{{ super() }}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
+{% endblock %}
 
 {% block library_css %}
 <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
