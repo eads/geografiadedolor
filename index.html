@@ -43,19 +43,19 @@ var sizeMap = function() {
   var width = $('#index-map').width(),
       windowHeight = $(window).height(),
       aspect = 0.5625,
-      height = width * aspect;
+      height = width * aspect,
+      top = ((windowHeight / 2) - (height / 2));
 
   $('#index-map').css({
     'height': height + 'px',
-    'top': ((windowHeight / 2) - (height / 2)) + 'px',
+    'top': (top > 0) ? top + 'px' : 0,
   });
 }
 
 $(document).ready(function() {
   // Fit the headline text
-
-  $("h1").fitText(1.2);
-  // $("#line2").fitText();
+  $("#line1").fitText(0.6);
+  $("#line2").fitText(0.4);
 
   // Size map on init, also resize
   sizeMap();
