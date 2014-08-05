@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+
+{# @TODO Not sure how we will do this yet #}
+{% if PATH.startswith("en/") %}
+  {% set lang = "en" %}
+{% else %}
+  {% set lang = "es" %}
+{% endif %}
+
+{# blank out nav and footer #}
+{% block nav %}{% endblock %}
+{% block footer %}{% endblock %}
+
+
+{% block library_css %}
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+{% endblock library_css %}
