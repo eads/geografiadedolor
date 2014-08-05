@@ -1,11 +1,47 @@
+@font-face {
+  font-family: "Guardian Egypt";
+  src: url("../fonts/Guardian Egyp-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Guardian Egypt";
+  font-weight: 100;
+  font-style: italic;
+  src: url("../fonts/Guardian Egyp-Hairline It.otf") format("opentype");
+}
+@font-face {
+  font-family: "Guardian Egypt";
+  font-weight: 600;
+  src: url("../fonts/Guardian Egyp-Semibold.otf") format("opentype");
+}
+
 body {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
   background-color: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Guardian Egypt", Georgia, serif;
+}
+
+#index-nav span {
+  display: block;
+}
+
+#index-nav h1 {
+  color: #fff;
+}
+
+#index-nav h1 #line1 {
+  font-weight: 100;
+  font-style: italic;
+}
+#index-nav h1 #line2 {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+
+body {
+  overflow: hidden;
 }
 
 #index-map {
@@ -36,17 +72,5 @@ body {
 #index-nav {
   padding-left: 25px;
   width: 13%;
-}
-
-#index-nav span {
-  display: block;
-}
-
-#index-nav h1 #line1 {
-  font-weight: 200;
-  font-style: italic;
-}
-#index-nav h1 #line2 {
-  font-weight: 900;
 }
 

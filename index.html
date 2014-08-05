@@ -3,19 +3,35 @@
 {% block content %}
 <div id="index-map">
   <div id="index-nav">
-<!--     <h1>
+    <h1>
       <span id="line1">Geografia del</span>
       <span id="line2">Dolor</span>
-    </h1> -->
-    <h1>TEST</h1>
+    </h1>
   </div>
 
   {% for marker in markers %}
-  	<div class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
+  	<div data-toggle="modal" data-keyboard="true" data-target="#{{ marker.state|slugify|lower }}-modal" class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
      <div class="marker-inner"></div>
     </div>
 	{% endfor %}
 </div>
+
+{% for marker in markers %}
+<div class="modal fade" id="{{ marker.state|slugify|lower }}-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h2 class="modal-title">{{ marker.state }}</h2>
+      </div>
+      <div class="modal-body">
+        <p>Under construction</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
 {% endblock content %}
 
 {% block scripts %}
