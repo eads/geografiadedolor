@@ -9,6 +9,10 @@
     </h1>
   </div>
 
+  <div id="fullscreen">
+    <i class="glyphicon glyphicon-fullscreen"></i>
+  </div>
+
   {% for marker in markers %}
   	<div data-toggle="modal" data-keyboard="true" data-target="#{{ marker.state|slugify|lower }}-modal" class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
      <div class="marker-inner"></div>
@@ -33,7 +37,7 @@
           <div class="carousel-inner">
             {% for x in range(1, gallery_size) %}
             <div class="item {% if x == 1 %}active{% endif %}">
-              <img class="img-responsive" src="img/{{ slug }}/{{ slug }}-{{ x }}.jpg" />
+              <img class="img-responsive {% if x != 1 %}lazy{% endif %}" {% if x != 1 %}data-original{% else %}src{% endif %}="img/{{ slug }}/{{ slug }}-{{ x }}.jpg" />
             </div>
             {% endfor %}
           </div>
@@ -45,7 +49,7 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
-        <p><a href="#TK">WATCH THE VIDEO</a></p>
+        <p><a href="#TK" class="btn btn-default btn-lg">MIRA VIDEO <i class="glyphicon glyphicon-play-circle"></i></a></p>
       </div>
     </div>
   </div>
@@ -72,6 +76,22 @@ var sizeMap = function() {
   });
 }
 
+var requestFullScreen = function() {
+  var element = document.body;
+
+  // Supports most browsers and their versions.
+  var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+  if (requestMethod) { // Native full screen.
+    requestMethod.call(element);
+  } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+    var wscript = new ActiveXObject("WScript.Shell");
+    if (wscript !== null) {
+      wscript.SendKeys("{F11}");
+    }
+  }
+}
+
 $(document).ready(function() {
   // Size map on init, also resize
   sizeMap();
@@ -80,6 +100,15 @@ $(document).ready(function() {
   // Fit the headline text
   $("#line1").fitText(0.65);
   $("#line2").fitText(0.38);
+
+  $('.modal').on('shown.bs.modal', function(e) {
+    $(e.currentTarget).find('img.lazy').each(function() {
+      var src = $(this).data('original');
+      $(this).attr('src', src);
+    })
+  });
+
+  $('#fullscreen i').on('click', requestFullScreen);
 })
 
 </script>

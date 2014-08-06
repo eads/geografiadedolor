@@ -17,7 +17,7 @@ SPREADSHEET_KEY = "1_Duj8Upko57n-AXHFQCa_vy3zaJx19hjvnwPuX5otJo"
 EXCLUDES = ["*.md", "requirements.txt"]
 
 # Spreadsheet cache lifetime in seconds. (Default: 4)
-SPREADSHEET_CACHE_TTL = 30 # Crappy connection aqui
+# SPREADSHEET_CACHE_TTL = 4 # Crappy connection aqui
 
 # Create JSON data at ./data.json, disabled by default
 # CREATE_JSON = True
