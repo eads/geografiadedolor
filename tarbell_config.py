@@ -17,7 +17,7 @@ SPREADSHEET_KEY = "1_Duj8Upko57n-AXHFQCa_vy3zaJx19hjvnwPuX5otJo"
 EXCLUDES = ["*.md", "requirements.txt"]
 
 # Spreadsheet cache lifetime in seconds. (Default: 4)
-# SPREADSHEET_CACHE_TTL = 4
+SPREADSHEET_CACHE_TTL = 30 # Crappy connection aqui
 
 # Create JSON data at ./data.json, disabled by default
 # CREATE_JSON = True
@@ -34,11 +34,9 @@ EXCLUDES = ["*.md", "requirements.txt"]
 # CREDENTIALS_PATH = ""
 
 # S3 bucket configuration
-#S3_BUCKETS = {
-    # Provide target -> s3 url pairs, such as:
-    #     "mytarget": "mys3url.bucket.url/some/path"
-    # then use tarbell publish mytarget to publish to it
-#}
+S3_BUCKETS = {
+  'staging': 'recoveredfactory.net/geografiadeldolor'
+}
 
 # Default template variables
 DEFAULT_CONTEXT = {

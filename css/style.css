@@ -16,61 +16,92 @@
 
 body {
   background-color: #000;
+  color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Guardian Egypt", Georgia, serif;
 }
 
-#index-nav span {
-  display: block;
-}
-
-#index-nav h1 {
-  color: #fff;
-}
-
 #index-nav h1 #line1 {
   font-weight: 100;
   font-style: italic;
 }
+
 #index-nav h1 #line2 {
   font-weight: 600;
   text-transform: uppercase;
 }
 
-
-body {
-  overflow: hidden;
-}
-
 #index-map {
-  position: absolute;
-  width: 100%;
-  background-image: url(../img/map_home.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
+  width: 90%;
+  margin: 0 auto;
 }
 
-.marker {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 1px solid #fff;
+.modal-content {
+  background-color: rgba(200, 200, 200, 0.2);
 }
 
-.marker-inner {
-  margin-left: 2px;
-  margin-top: 2px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 6px solid #fff;
+.modal-backdrop.in {
+  opacity: .8;
 }
 
-#index-nav {
-  padding-left: 25px;
-  width: 13%;
+.close {
+  font-size: 40px;
+  color: #fff;
+  text-shadow: 0 2px 0 #000;
+  opacity: .8;
 }
 
+.modal-header .close {
+  margin-top: -8px;
+}
+
+@media (min-width: 700px) {
+  #index-nav h1 span {
+    display: block;
+  }
+
+  #index-map {
+    position: absolute;
+    width: 100%;
+    background-image: url(../img/map_home.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  .marker {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+  }
+
+  .marker-inner {
+    margin-left: 2px;
+    margin-top: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+  }
+
+  #index-nav {
+    padding-left: 25px;
+    width: 13%;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 500px;
+    margin: 30px auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 800px;
+  }
+}
