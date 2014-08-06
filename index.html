@@ -40,7 +40,7 @@
         {% if gallery_size > 1 %}
         <div id="{{ slug }}-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner">
-            {% for x in range(1, gallery_size) %}
+            {% for x in range(1, gallery_size + 1) %}
             <div class="item {% if x == 1 %}active{% endif %}">
               <img class="img-responsive {% if x != 1 %}lazy{% endif %}" {% if x != 1 %}data-original{% else %}src{% endif %}="img/{{ slug }}/{{ slug }}-{{ x }}.jpg" />
             </div>
@@ -55,7 +55,7 @@
           </a>
         </div>
         {% else %}
-          <img class="img-responsive src="img/{{ slug }}/{{ slug }}-{{ x }}.jpg" />
+          <img class="img-responsive" src="img/{{ slug }}/{{ slug }}-1.jpg" />
         {% endif %}
         <p><a href="#TK" class="btn btn-default btn-lg">MIRA VIDEO <i class="glyphicon glyphicon-play-circle"></i></a></p>
       </div>
