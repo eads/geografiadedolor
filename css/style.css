@@ -10,6 +10,11 @@
 }
 @font-face {
   font-family: "Guardian Egypt";
+  font-weight: 100;
+  src: url("../fonts/Guardian Egyp-Hairline.otf") format("opentype");
+}
+@font-face {
+  font-family: "Guardian Egypt";
   font-weight: 600;
   src: url("../fonts/Guardian Egyp-Semibold.otf") format("opentype");
 }
@@ -21,6 +26,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Guardian Egypt", Georgia, serif;
+}
+
+.tooltip-inner {
+  font-family: "Guardian Egypt", Georgia, serif;
+  font-weight: 100;
+  font-size: 18px;
 }
 
 #index-nav h1 #line1 {

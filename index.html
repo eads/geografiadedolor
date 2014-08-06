@@ -15,7 +15,7 @@
 
   {% for marker in markers %}
   	<div data-toggle="modal" data-keyboard="true" data-target="#{{ marker.state|slugify|lower }}-modal" class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
-     <div class="marker-inner"></div>
+     <div class="marker-inner" data-toggle="tooltip" data-placement="top" data-title="{{ marker.state }}"></div>
     </div>
 	{% endfor %}
 </div>
@@ -33,6 +33,7 @@
         <h3 class="modal-title">{{ marker.state }}</h3>
       </div>
       <div class="modal-body">
+        {% if gallery_size > 1 %}
         <div id="{{ slug }}-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner">
             {% for x in range(1, gallery_size) %}
@@ -49,6 +50,9 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
+        {% else %}
+          <img class="img-responsive src="img/{{ slug }}/{{ slug }}-{{ x }}.jpg" />
+        {% endif %}
         <p><a href="#TK" class="btn btn-default btn-lg">MIRA VIDEO <i class="glyphicon glyphicon-play-circle"></i></a></p>
       </div>
     </div>
@@ -101,6 +105,10 @@ $(document).ready(function() {
   $("#line1").fitText(0.65);
   $("#line2").fitText(0.38);
 
+  // Tooltips
+  $('.marker-inner').tooltip();
+
+  // Lazy load images in modal boxes
   $('.modal').on('shown.bs.modal', function(e) {
     $(e.currentTarget).find('img.lazy').each(function() {
       var src = $(this).data('original');
@@ -108,6 +116,7 @@ $(document).ready(function() {
     })
   });
 
+  // Attach fullscreen button behavior
   $('#fullscreen i').on('click', requestFullScreen);
 })
 
