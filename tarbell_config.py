@@ -57,7 +57,7 @@ from tarbell.hooks import register_hook
 
 blueprint = Blueprint('geografiadeldolor', __name__)
 
-@blueprint.route('/espacios/<slug>/')
+@blueprint.route('/espacio/<slug>/')
 def espacio(slug):
     path = os.path.dirname(os.path.realpath(__file__))
     site = TarbellSite(path)
