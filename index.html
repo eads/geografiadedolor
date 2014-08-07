@@ -76,13 +76,15 @@
 // proper marker size
 var sizeMap = function() {
   var width = $('#index-map').width(),
+      windowWidth = $(window).width(),
       windowHeight = $(window).height(),
       aspect = 0.5625,
       height = width * aspect,
       top = ((windowHeight / 2) - (height / 2));
 
   $('#index-map').css({
-    'height': height + 'px',
+    'height': (height > windowHeight) ? windowHeight + 'px' : height + 'px',
+    'width': (height > windowHeight) ? (windowHeight / aspect) + 'px' : '100%',
     'top': (top > 0) ? top + 'px' : 0,
   });
 }
