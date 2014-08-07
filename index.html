@@ -37,9 +37,9 @@
         <h3 class="modal-title">{{ marker.state }}</h3>
       </div>
       <div class="modal-body">
+        <a href="espacio/{{ slug }}/" class="btn btn-lg btn-watch">Conoce la historia <i class="glyphicon glyphicon-play-circle"></i></a>
         <p>
           {{ marker.victim }}
-          <a href="espacio/{{ slug }}/" class="btn btn-watch">Conoce la historia <i class="glyphicon glyphicon-play-circle"></i></a>
         </p>
         {% if gallery_size > 1 %}
         <div id="{{ slug }}-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
