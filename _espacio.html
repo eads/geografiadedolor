@@ -1,0 +1,40 @@
+{% extends "_geografia_base.html" %}
+
+{% block css %}
+<style>
+  #espacio-canvas {
+    background-image: url(../../img/espacios/espacio_{{ slug }}.jpg);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="espacio-canvas"></div>
+  <div class="video">
+    <iframe src="//player.vimeo.com/video/{{ vimeo|int }}?badge=0&title=0&portrait=0&byline=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>   
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+// Use natural aspect ratio of map to set height and maintain
+// proper marker size
+var positionVideo = function() {
+  var height = $('.video iframe').height(),
+      windowHeight = $(window).height(),
+      top = ((windowHeight / 2) - (height / 2));
+
+  $('.video').css({
+    'top': (top > 0) ? top + 'px' : 0,
+  });
+}
+
+$(document).ready(function() {
+  // Size map on init, also resize
+  positionVideo();
+  $(window).on('resize', positionVideo);
+})
+
+</script>
+{% endblock %}

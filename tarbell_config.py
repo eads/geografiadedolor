@@ -35,7 +35,8 @@ EXCLUDES = ["*.md", "requirements.txt"]
 
 # S3 bucket configuration
 S3_BUCKETS = {
-  'staging': 'recoveredfactory.net/geografiadeldolor'
+  'staging': 'recoveredfactory.net/geografiadeldolor',
+  'production': 'geografiadeldolor.com',
 }
 
 # Default template variables
@@ -43,3 +44,55 @@ DEFAULT_CONTEXT = {
     'name': 'geografiadedolor',
     'title': 'Geografia de dolor'
 }
+
+# Blueprint
+import os
+from flask import Blueprint, abort
+from tarbell.app import TarbellSite
+from tarbell.slughifi import slughifi
+
+from boto.s3.key import Key
+from clint.textui import puts, colored
+from tarbell.hooks import register_hook
+
+blueprint = Blueprint('geografiadeldolor', __name__)
+
+@blueprint.route('/espacios/<slug>/')
+def espacio(slug):
+    path = os.path.dirname(os.path.realpath(__file__))
+    site = TarbellSite(path)
+    context = site.get_context()
+    markers = {}
+    for marker in context["markers"]:
+        marker["slug"] = slughifi(marker["state"].lower())
+        markers[marker["slug"]] = marker
+
+    if slug not in markers.keys():
+        abort(404)
+
+    extra_context = {
+        "relative_root": "../../",
+        "PATH": "%s.html" % slug,
+    }
+    extra_context.update(markers[slug])
+    return site.preview("_espacio.html", extra_context)
+
+@register_hook('publish')
+def create_moment_stubs(site, s3):
+
+    data = site.get_context()
+    markers = data["markers"]
+  
+    for marker in markers:
+        slug = slughifi(marker["state"].lower())
+
+        k = Key(s3.connection)
+        k.key = '{0}/espacio/{1}/index.html'.format(s3.bucket.path, slug)
+
+        with site.app.test_request_context('/espacio/{0}/'.format(slug)):
+            resp = espacio(slug)
+        
+        puts('Uploading {0}'.format(colored.yellow(k.key)))
+        options = {'Content-Type': 'text/html',}
+        k.set_contents_from_string(resp.data, options)
+        k.set_acl('public-read')
