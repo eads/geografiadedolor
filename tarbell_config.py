@@ -36,7 +36,7 @@ EXCLUDES = ["*.md", "requirements.txt"]
 # S3 bucket configuration
 S3_BUCKETS = {
   'staging': 'recoveredfactory.net/geografiadeldolor',
-  'production': 'geografiadeldolor.com',
+  'production': 'www.geografiadeldolor.com',
 }
 
 # Default template variables
