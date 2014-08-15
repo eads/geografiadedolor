@@ -34,6 +34,10 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 18px;
 }
 
+#index-nav h1 {
+  text-align: center;
+}
+
 #index-nav h1 #line1 {
   font-weight: 100;
   font-style: italic;
@@ -45,12 +49,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #index-map {
-  width: 90%;
-  margin: 0 auto;
+  position: static;
+}
+
+#logo {
+  text-align: center;
+}
+#logo img {
+  display: inline;
 }
 
 .modal-content {
-  background-color: rgba(200, 200, 200, 0.2);
+  background-color: #000;
 }
 
 .modal-backdrop.in {
@@ -102,6 +112,21 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
 }
 
+#marker-list h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+#marker-list .row {
+  margin-bottom: 20px;
+}
+#marker-list .col-xs-5 {
+  padding-right: 0;
+}
+#marker-list i {
+  font-size: 12px;
+}
+
 .video {
   position: absolute;
   width: 55%;
@@ -116,6 +141,10 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
+#fullscreen, #markers {
+  display: none;
+}
+
 @media (min-width: 700px) {
   body {
     position: absolute;
@@ -124,6 +153,14 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     bottom: 0;
     overflow: hidden;
+  }
+
+  .modal-content {
+    background-color: rgba(100, 100, 100, 0.2);
+  }
+
+  #marker-list {
+    display: none;
   }
 
   #index-nav h1 span {
@@ -140,9 +177,9 @@ h1, h2, h3, h4, h5, h6 {
     background-repeat: no-repeat;
   }
 
-/*  :-webkit-full-screen #index-map {
-    width: 100%;
-  }*/
+  #markers {
+    display: block;
+  }
 
   .marker {
     position: absolute;
@@ -167,6 +204,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   #fullscreen {
+    display: block;
     position: absolute;
     top: 10px;
     right: 10px;
