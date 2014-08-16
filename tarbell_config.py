@@ -78,7 +78,7 @@ def espacio(slug):
     return site.preview("_espacio.html", extra_context)
 
 @register_hook('publish')
-def create_moment_stubs(site, s3):
+def create_espacio_pages(site, s3):
 
     data = site.get_context()
     markers = data["markers"]
