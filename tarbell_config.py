@@ -77,22 +77,25 @@ def espacio(slug):
     extra_context.update(markers[slug])
     return site.preview("_espacio.html", extra_context)
 
-@register_hook('publish')
-def create_espacio_pages(site, s3):
+@register_hook('generate')
+def create_espacio_pages(site, output_root, quiet=False):
+    if not quiet:
+        puts("\nCreating espacio pages\n")
 
     data = site.get_context()
     markers = data["markers"]
-  
+    root_path = os.path.join(os.path.realpath(output_root), 'espacio/')
+
+    if not os.path.exists(root_path):
+        os.makedirs(root_path)
+
     for marker in markers:
         slug = slughifi(marker["state"].lower())
-
-        k = Key(s3.connection)
-        k.key = '{0}/espacio/{1}/index.html'.format(s3.bucket.path, slug)
-
+        page_path = os.path.join(root_path, '{0}.html'.format(slug))
+        if not quiet:
+            puts("Writing {0}/espacio/{1}.html".format(output_root, slug))
         with site.app.test_request_context('/espacio/{0}/'.format(slug)):
             resp = espacio(slug)
-        
-        puts('Uploading {0}'.format(colored.yellow(k.key)))
-        options = {'Content-Type': 'text/html',}
-        k.set_contents_from_string(resp.data, options)
-        k.set_acl('public-read')
+        f = open(page_path, 'w')
+        f.write(resp.data)
+        f.close()
