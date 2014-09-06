@@ -47,21 +47,18 @@ DEFAULT_CONTEXT = {
 
 # Blueprint
 import os
-from flask import Blueprint, abort
-from tarbell.app import TarbellSite
+from flask import Blueprint, abort, g
 from tarbell.slughifi import slughifi
 
-from boto.s3.key import Key
-from clint.textui import puts, colored
+from clint.textui import puts
 from tarbell.hooks import register_hook
 
 blueprint = Blueprint('geografiadeldolor', __name__)
 
+
 @blueprint.route('/espacio/<slug>/')
 def espacio(slug):
-    path = os.path.dirname(os.path.realpath(__file__))
-    site = TarbellSite(path)
-    context = site.get_context()
+    context = g.current_site.get_context()
     markers = {}
     for marker in context["markers"]:
         marker["slug"] = slughifi(marker["state"].lower())
@@ -75,7 +72,8 @@ def espacio(slug):
         "PATH": "%s.html" % slug,
     }
     extra_context.update(markers[slug])
-    return site.preview("_espacio.html", extra_context)
+    return g.current_site.preview("_espacio.html", extra_context)
+
 
 @register_hook('generate')
 def create_espacio_pages(site, output_root, quiet=False):
@@ -94,8 +92,8 @@ def create_espacio_pages(site, output_root, quiet=False):
         page_path = os.path.join(root_path, '{0}.html'.format(slug))
         if not quiet:
             puts("Writing {0}/espacio/{1}.html".format(output_root, slug))
-        with site.app.test_request_context('/espacio/{0}/'.format(slug)):
-            resp = espacio(slug)
+        with site.app.test_client() as client:
+            resp = client.get('/espacio/{0}/'.format(slug))
         f = open(page_path, 'w')
         f.write(resp.data)
         f.close()
