@@ -143,6 +143,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 55%;
   left: 25%;
   padding-bottom: 31%;
+  -webkit-box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
 }
 .video iframe {
   position: absolute;
