@@ -175,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
 
   #index-map {
     position: absolute;
-    left: 0;
+    right: 0;
     top: 0;
     width: 100%;
     background-image: url(../img/map_home.jpg);
