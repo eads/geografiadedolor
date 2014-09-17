@@ -34,6 +34,28 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 18px;
 }
 
+.preview {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.preview-inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.preview .date {
+  font-weight: 600;
+  color: #5acdfa;
+  font-size: 90px;
+}
+
+.preview .url {
+  font-size: 60px;
+}
+
 #index-nav h1 {
   text-align: center;
 }
