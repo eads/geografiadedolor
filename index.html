@@ -108,6 +108,7 @@ var sizeMap = function() {
       'height': (height > windowHeight) ? windowHeight + 'px' : height + 'px',
       'width': (height > windowHeight) ? (windowHeight / aspect) + 'px' : '100%',
       'top': (top > 0) ? top + 'px' : 0,
+      'left': (height > windowHeight) ? ((windowWidth - (windowHeight / aspect)) / 2) + 'px' : 0
     });
 
     // Fit the headline text
