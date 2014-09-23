@@ -60,12 +60,13 @@ body {
 }
 
 .modal-body {
-  padding-top: 10px;
+  padding: 10px 15px 15px 15px;
 }
 
 .modal-body .victims {
   font-size: 16px;
   padding-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .modal-body img {
@@ -96,7 +97,7 @@ body {
 }
 
 .modal-header .close {
-  margin-top: -2px;
+  margin-top: 2px;
 }
 
 .btn-watch {
