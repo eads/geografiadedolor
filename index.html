@@ -59,9 +59,8 @@
       </div>
       <div class="modal-body">
         <p class="victims">
-          {{ marker.victim }}
+          Víctimas / Victims: <strong>{{ marker.victim }}</strong>
         </p>
-        <p><a href="espacio/{{ slug }}/" class="btn btn-block btn-watch">Conoce la historia <i class="glyphicon glyphicon-play-circle"></i></a></p>
         {% if gallery_size > 1 %}
         <div id="{{ slug }}-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner">
@@ -82,6 +81,7 @@
         {% else %}
           <img class="img-responsive" src="img/{{ slug }}/{{ slug }}-1.jpg" />
         {% endif %}
+        <p class="conoce"><a href="espacio/{{ slug }}/" class="btn btn-block btn-lg btn-watch">Conoce la historia / Learn the story <i class="glyphicon glyphicon-play-circle"></i></a></p>
       </div>
     </div>
   </div>
@@ -147,8 +147,26 @@ $(document).ready(function() {
   // Tooltips
   $('.marker-inner').tooltip();
 
+  // Size images
+  $('.modal').on('show.bs.modal', function(e) {
+    $(e.currentTarget).css({
+      'display': 'block'
+    });
+    var windowHeight = $(window).height(),
+        button = $(e.currentTarget).find('.conoce'),
+        images = $(e.currentTarget).find('img'),
+        buttonHeight = button.outerHeight(),
+        carouselTop = images.offset().top;
+
+    var height = (windowHeight - carouselTop - buttonHeight) * 0.7;
+    images.height(height);
+  });
+
+
   // Lazy load images in modal boxes
   $('.modal').on('shown.bs.modal', function(e) {
+    var height = $(e.currentTarget).find('img').height();
+    console.log(height);
     $(e.currentTarget).find('img.lazy').each(function() {
       var src = $(this).data('original');
       $(this).attr('src', src);

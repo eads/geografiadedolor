@@ -6,13 +6,11 @@
 
 {% block library_scripts %}
 {{ super() }}
-<script type="text/javascript" src="{{ relative_root }}js/jquery.min.js"></script>
-<script type="text/javascript" src="{{ relative_root }}js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{{ relative_root }}js/jquery.fittext.min.js"></script>
 <script type="text/javascript" src="{{ relative_root }}js/jquery.lazyload.min.js"></script>
 {% endblock %}
 
 {% block library_css %}
-<link rel="stylesheet" type="text/css" href="{{ relative_root }}css/bootstrap.min.css" />
+{{ super() }}
 <link rel="stylesheet" type="text/css" href="{{ relative_root }}css/style.css" />
 {% endblock library_css %}

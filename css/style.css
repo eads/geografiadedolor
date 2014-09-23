@@ -22,14 +22,10 @@
 body {
   background-color: #000;
   color: #fff;
-}
-
-h1, h2, h3, h4, h5, h6 {
   font-family: "Guardian Egypt", Georgia, serif;
 }
 
 .tooltip-inner {
-  font-family: "Guardian Egypt", Georgia, serif;
   font-weight: 100;
   font-size: 18px;
 }
@@ -59,10 +55,6 @@ h1, h2, h3, h4, h5, h6 {
   display: inline;
 }
 
-.modal-content {
-  background-color: #000;
-}
-
 .modal-backdrop.in {
   opacity: .8;
 }
@@ -71,13 +63,18 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 10px;
 }
 
-.modal-body p {
-  margin-bottom: 10px;
+.modal-body .victims {
+  font-size: 16px;
+  padding-bottom: 10px;
 }
 
-.modal-body .victims {
-  font-family: "Guardian Egypt", Georgia, serif;
-  font-size: 16px;
+.modal-body img {
+  margin: 0 auto;
+}
+
+.modal-body .conoce {
+  padding-top: 10px;
+  margin-bottom: 0;
 }
 
 .close {
@@ -96,7 +93,6 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #555;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: rgba(0,0,0,0.5);
 }
 
 .modal-header .close {
@@ -105,7 +101,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-watch {
   color: #fff;
-  background-color: #555;
+  background-color: #000;
+}
+.btn-watch i {
+  margin-left: 3px;
+  margin-top: 2px;
 }
 .btn-watch:hover {
   background-color: #333;
@@ -171,7 +171,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .modal-content {
-    background-color: rgba(100, 100, 100, 0.2);
+    background-color: rgba(50,50,50,0.6);
   }
 
   #marker-list {
