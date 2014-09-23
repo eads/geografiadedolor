@@ -1,12 +1,5 @@
 {% extends "_base.html" %}
 
-{# @TODO Not sure how we will do this yet #}
-{% if PATH.startswith("en/") %}
-  {% set lang = "en" %}
-{% else %}
-  {% set lang = "es" %}
-{% endif %}
-
 {# blank out nav and footer #}
 {% block nav %}{% endblock %}
 {% block footer %}{% endblock %}
