@@ -57,11 +57,14 @@ var showModal = function(e) {
         button = $(e.currentTarget).find('.conoce'),
         victims = $(e.currentTarget).find('.victims'),
         images = $(e.currentTarget).find('img'),
-        elementHeight = header.outerHeight() + victims.outerHeight() + button.outerHeight() + dialog.offset().top + 280,
+        fuzz = (windowWidth > 968) ? 280 : 120,
+        elementHeight = header.outerHeight() + victims.outerHeight() + button.outerHeight() + dialog.offset().top + fuzz;
         maxHeight = windowHeight - elementHeight;
 
-    if (windowWidth > windowHeight) {
-      images.height(maxHeight);
+    if (windowWidth > 699) {
+      images.css({'max-height': maxHeight + 'px'});
+    } else {
+      images.css({'max-height': 'auto'});
     }
 }
 
