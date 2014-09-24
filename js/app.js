@@ -57,11 +57,11 @@ var showModal = function(e) {
         button = $(e.currentTarget).find('.conoce'),
         victims = $(e.currentTarget).find('.victims'),
         images = $(e.currentTarget).find('img'),
-        fuzz = (windowWidth > 726) ? 280 : 160,
+        fuzz = (windowWidth > 968) ? 280 : 160,
         elementHeight = header.outerHeight() + victims.outerHeight() + button.outerHeight() + dialog.offset().top + fuzz;
         maxHeight = windowHeight - elementHeight;
 
-    if (windowWidth > 726) {
+    if (windowWidth > 699 && windowWidth > windowHeight) {
       images.css({
         'height': maxHeight + 'px',
         'width': 'auto',
