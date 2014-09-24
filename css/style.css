@@ -63,11 +63,11 @@ body {
 }
 
 .modal-body {
+  font-size: 16px;
   padding: 10px 15px 12px 15px;
 }
 
 .modal-body .victims {
-  font-size: 16px;
   padding-bottom: 10px;
   margin-bottom: 0;
 }
@@ -236,6 +236,6 @@ body {
     overflow: hidden;
   }
   .modal-dialog {
-    width: 60%;
+    width: 700px;
   }
 }
