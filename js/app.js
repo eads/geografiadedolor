@@ -125,6 +125,10 @@ $(document).ready(function() {
   // Bind modal when it is shown
   $('.modal').on('shown.bs.modal', shownModal);
 
+  // Bind fullscreen button behavior
+  $('#fullscreen i').on('click', requestFullScreen);
+
+  // Fire up quotes after a second
   setTimeout(function() {
     $('#quotes').animate({'opacity': 1}, 1000);
     _rotateQuote($('#quotes').find('.carousel').find('.active'));
@@ -133,7 +137,5 @@ $(document).ready(function() {
       .on('slid.bs.carousel', slidQuote);
   }, 1000);
 
-  // Bind fullscreen button behavior
-  $('#fullscreen i').on('click', requestFullScreen);
 })
 
