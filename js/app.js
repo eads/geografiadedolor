@@ -2,6 +2,8 @@
 // Use natural aspect ratio of map to set height and maintain
 // proper marker size
 var sizeMap = function() {
+  $(window).off('resize.fittext orientationchange.fittext');
+
   var width = $('#index-map').width(),
       windowWidth = $(window).width(),
       windowHeight = $(window).height(),
@@ -25,6 +27,8 @@ var sizeMap = function() {
       'width': 'auto',
     });
 
+    $("#line1").style('font-size', 'inherit');
+    $("#line2").style('font-size', 'inherit');
     $("#index-nav h1").fitText();
   }
 }
@@ -79,7 +83,27 @@ var shownModal = function(e) {
     var src = $(this).data('original');
     $(this).attr('src', src);
   });
+}
 
+var _rotateQuote = function(el) {
+  var state = $(el).data('state');
+  $('#marker-' + state).find('.marker-inner').tooltip('show');
+}
+
+var blockCarousel = false;
+
+var slidQuote = function(e) {
+  _rotateQuote($(e.relatedTarget));
+}
+
+var slideQuote = function(e) {
+  var isHovered = !!$('.marker-inner').filter(function() { return $(this).is(':hover'); }).length;
+  if (!blockCarousel && !isHovered) {
+      $('.marker-inner').tooltip('hide');
+      setTimeout(function() {
+        _rotateQuote($(e.relatedTarget));
+      }, 200);
+    }
 }
 
 $(document).ready(function() {
@@ -89,12 +113,25 @@ $(document).ready(function() {
 
   // Bind tooltips
   $('.marker-inner').tooltip();
+  $('.marker-inner').hover(function(e) {
+    $('.marker-inner').not($(e.currentTarget)).tooltip('hide');
+    blockCarousel = true;
+    setTimeout(function() { blockCarousel = false; }, 2000);
+  });
 
   // Bind modal open before it animates into view
   $('.modal').on('show.bs.modal', showModal);
 
   // Bind modal when it is shown
   $('.modal').on('shown.bs.modal', shownModal);
+
+  setTimeout(function() {
+    $('#quotes').animate({'opacity': 1}, 1000);
+    _rotateQuote($('#quotes').find('.carousel').find('.active'));
+    $('#quotes').find('.carousel')
+      .on('slide.bs.carousel', slideQuote)
+      .on('slid.bs.carousel', slidQuote);
+  }, 1000);
 
   // Bind fullscreen button behavior
   $('#fullscreen i').on('click', requestFullScreen);

@@ -23,6 +23,7 @@ body {
   background-color: #000;
   color: #fff;
   font-family: "Guardian Egypt", Georgia, serif;
+  padding: 0;
 }
 
 .tooltip-inner {
@@ -164,6 +165,31 @@ body {
   display: none;
 }
 
+/* Fade transition for carousel items */
+.carousel .item {
+    left: 0 !important;
+      -webkit-transition: opacity 1.0s; /*adjust timing here */
+         -moz-transition: opacity 1.0s;
+           -o-transition: opacity 1.0s;
+              transition: opacity 1.0s;
+}
+.carousel-control {
+    background-image: none !important; /* remove background gradients on controls */
+}
+/* Fade controls with items */
+.next.left,
+.prev.right {
+    opacity: 1;
+    z-index: 1;
+}
+.active.left,
+.active.right {
+    opacity: 0;
+    z-index: 2;
+}
+
+#quotes { display: none; }
+
 @media (min-width: 700px) {
   body {
     position: absolute;
@@ -190,10 +216,46 @@ body {
     background-image: url(../img/map_home.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+    background-position: contain;
   }
 
   #markers {
     display: block;
+  }
+
+  #quotes {
+    opacity: 0;
+    display: block;
+    position: absolute;
+    width: 27%;
+    left: 17%;
+    bottom: 5%;
+    font-size: 12px;
+    font-size: 1.1vw;
+    vertical-align: middle;
+    text-align: center;
+    height: 28%;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  }
+  #quotes .carousel, #quotes .carousel .carousel-inner, #quotes .carousel .item {
+    height: 100%;
+  }
+  #quotes .carousel .item .item-table-wrapper {
+    display: table;
+    height: 100%;
+  }
+  #quotes .carousel .item .item-cell-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  #quotes a {
+    color: #fff;
+    text-decoration: none;
+  }
+  #quotes .state {
+    font-size: 1vw;
+    text-transform: uppercase;
+    padding: 8px 0;
   }
 
   .marker {
@@ -236,6 +298,8 @@ body {
     overflow: hidden;
   }
   .modal-dialog {
-    width: 700px;
+    width: auto;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 }

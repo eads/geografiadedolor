@@ -9,13 +9,14 @@
     </h1>
   </div>
 
-  {% for marker in markers %}
   <div id="markers">
-  	<div data-toggle="modal" data-keyboard="true" data-target="#{{ marker.state|slugify|lower }}-modal" class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
+  {% for marker in markers %}
+    {% set slug = marker.state|slugify|lower %}
+  	<div id="marker-{{ slug }}" data-toggle="modal" data-keyboard="true" data-target="#{{ slug }}-modal" class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
      <div class="marker-inner" data-toggle="tooltip" data-placement="top" data-title="{{ marker.state }}"></div>
     </div>
-  </div>
 	{% endfor %}
+  </div>
 
   <div id="marker-list">
     <div class="container">
@@ -43,11 +44,39 @@
   <div id="fullscreen">
     <i class="glyphicon glyphicon-fullscreen"></i>
   </div>
+
+
+  <div id="quotes">
+    <div id="quote-carousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+      <div class="carousel-inner">
+        {% set quotes = markers|filter_quotes %}
+        {% for marker in quotes %}
+        {% set slug = marker.state|slugify|lower %}
+        <div class="item {% if loop.index == 1 %}active{% endif %}" data-state="{{ slug }}">
+          <div class="item-table-wrapper">
+            <div class="item-cell-wrapper">
+              <a href="espacio/{{ slug }}/">
+                {% if marker.quote_es %}
+                <p>&ldquo;{{ marker.quote_es }}&rdquo;</p>
+                {% endif %}
+                <p class="state">&mdash;&mdash;&mdash; {{ marker.state }} &mdash;&mdash;&mdash;</p>
+                {% if marker.quote_en %}
+                <p>&ldquo;{{ marker.quote_en }}&rdquo;</p>
+                {% endif %}
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
 </div>
 
 {% for marker in markers %}
 
-{% set gallery_size = marker.gallery_size|int %}
+{% set gallery_size = marker.gallery_size %}
 {% set slug = marker.state|slugify|lower %}
 
 <div class="modal fade" id="{{ slug }}-modal" tabindex="-1">
@@ -62,7 +91,7 @@
           Víctimas / Victims: <strong>{{ marker.victim }}</strong>
         </p>
         {% if gallery_size > 1 %}
-        <div id="{{ slug }}-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div id="{{ slug }}-gallery" class="carousel" data-ride="carousel" data-interval="false">
           <div class="carousel-inner">
             {% for x in range(1, gallery_size + 1) %}
             <div class="item {% if x == 1 %}active{% endif %}">

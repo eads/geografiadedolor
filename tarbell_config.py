@@ -74,6 +74,10 @@ def espacio(slug):
     extra_context.update(markers[slug])
     return g.current_site.preview("_espacio.html", extra_context)
 
+@blueprint.app_template_filter()
+def filter_quotes(arr):
+    ret = [item for item in arr if (item.get("quote_en") and item.get("quote_es"))]
+    return ret
 
 @register_hook('generate')
 def create_espacio_pages(site, output_root, quiet=False):
