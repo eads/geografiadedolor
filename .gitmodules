@@ -4,3 +4,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = git@github.com:eads/guardian-font.git
+[submodule "img"]
+	path = img
+	url = git@github.com:eads/geografia-images.git
