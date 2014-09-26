@@ -165,7 +165,10 @@ body {
   display: none;
 }
 
-#quotes { display: none; }
+#quotes {
+  display: none;
+  cursor: pointer;
+}
 
 .quote-rotator .fade {
    opacity: 0;
@@ -180,7 +183,7 @@ body {
 }
 
 .quote-rotator .tooltip-inner {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 /* Fade transition for carousel items */
