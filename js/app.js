@@ -131,7 +131,7 @@ $(document).ready(function() {
   $('.modal').on('shown.bs.modal', shownModal);
 
   // Bind fullscreen button behavior
-  $('#fullscreen i').on('click', requestFullScreen);
+  $('#fullscreen').on('click', requestFullScreen);
 
   // Fire up quotes after a second
   setTimeout(function() {
