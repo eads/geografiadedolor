@@ -47,23 +47,21 @@
 
 
   <div id="quotes">
-    <div id="quote-carousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <div id="quote-carousel" class="carousel slide" data-ride="carousel" data-interval="8000">
       <div class="carousel-inner">
         {% set quotes = markers|filter_quotes %}
         {% for marker in quotes %}
         {% set slug = marker.state|slugify|lower %}
         <div class="item {% if loop.index == 1 %}active{% endif %}" data-state="{{ slug }}">
           <div class="item-table-wrapper">
-            <div class="item-cell-wrapper">
-              <a href="espacio/{{ slug }}/">
-                {% if marker.quote_es %}
-                <p>&ldquo;{{ marker.quote_es }}&rdquo;</p>
-                {% endif %}
-                <p class="state">&mdash;&mdash;&mdash; {{ marker.state }} &mdash;&mdash;&mdash;</p>
-                {% if marker.quote_en %}
-                <p>&ldquo;{{ marker.quote_en }}&rdquo;</p>
-                {% endif %}
-              </a>
+            <div class="item-cell-wrapper" data-toggle="modal" data-target="#{{ slug }}-modal">
+              {% if marker.quote_es %}
+              <p>&ldquo;{{ marker.quote_es }}&rdquo;</p>
+              {% endif %}
+              <p class="state">&mdash;&mdash;&mdash; {{ marker.state }} &mdash;&mdash;&mdash;</p>
+              {% if marker.quote_en %}
+              <p>&ldquo;{{ marker.quote_en }}&rdquo;</p>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -91,7 +89,7 @@
           Víctimas / Victims: <strong>{{ marker.victim }}</strong>
         </p>
         {% if gallery_size > 1 %}
-        <div id="{{ slug }}-gallery" class="carousel" data-ride="carousel" data-interval="false">
+        <div id="{{ slug }}-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner">
             {% for x in range(1, gallery_size + 1) %}
             <div class="item {% if x == 1 %}active{% endif %}">

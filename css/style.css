@@ -28,7 +28,7 @@ body {
 
 .tooltip-inner {
   font-weight: 100;
-  font-size: 18px;
+  font-size: 21px;
 }
 
 #index-nav h1 {
@@ -165,16 +165,45 @@ body {
   display: none;
 }
 
+#quotes { display: none; }
+
+.quote-rotator .fade {
+   opacity: 0;
+   -webkit-transition: opacity .9s;
+      -moz-transition: opacity .9s;
+       -ms-transition: opacity .9s;
+        -o-transition: opacity .9s;
+           transition: opacity .9s;
+}
+.quote-rotator .fade.in {
+  opacity: 1;
+}
+
+.quote-rotator .tooltip-inner {
+  font-size: 16px;
+}
+
 /* Fade transition for carousel items */
 .carousel .item {
-    left: 0 !important;
-      -webkit-transition: opacity 1.0s; /*adjust timing here */
-         -moz-transition: opacity 1.0s;
-           -o-transition: opacity 1.0s;
-              transition: opacity 1.0s;
+  left: 0 !important;
+  -webkit-transition: opacity .8s;
+     -moz-transition: opacity .8s;
+       -o-transition: opacity .8s;
+          transition: opacity .8s;
 }
+#quotes .carousel .item {
+  -webkit-transition: opacity 1.3s;
+     -moz-transition: opacity 1.3s;
+       -o-transition: opacity 1.3s;
+          transition: opacity 1.3s;
+  -webkit-transition-delay: .2s;
+     -moz-transition-delay: .2s;
+       -o-transition-delay: .2s;
+          transition-delay: .2s;
+}
+
 .carousel-control {
-    background-image: none !important; /* remove background gradients on controls */
+    background-image: none !important; 
 }
 /* Fade controls with items */
 .next.left,
@@ -187,8 +216,6 @@ body {
     opacity: 0;
     z-index: 2;
 }
-
-#quotes { display: none; }
 
 @media (min-width: 700px) {
   body {
@@ -227,15 +254,15 @@ body {
     opacity: 0;
     display: block;
     position: absolute;
-    width: 28%;
-    left: 17%;
-    bottom: 5%;
+    width: 27%;
+    left: 14%;
+    bottom: 2.5%;
     font-size: 12px;
-    font-size: 1.4vw;
+    font-size: 1.2vw;
     vertical-align: middle;
     text-align: center;
-    height: 30%;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    height: 34%;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
   }
   #quotes .carousel, #quotes .carousel .carousel-inner, #quotes .carousel .item {
     height: 100%;
@@ -253,15 +280,15 @@ body {
     text-decoration: none;
   }
   #quotes .state {
-    font-size: 1.15vw;
+    font-size: 1.05vw;
     text-transform: uppercase;
     padding: 8px 0;
   }
 
   .marker {
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     border: 1px solid #fff;
   }
@@ -269,10 +296,10 @@ body {
   .marker-inner {
     margin-left: 2px;
     margin-top: 2px;
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    border: 6px solid #fff;
+    border: 9px solid #fff;
   }
 
   #index-nav {

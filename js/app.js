@@ -92,18 +92,26 @@ var _rotateQuote = function(el) {
 
 var blockCarousel = false;
 
-var slidQuote = function(e) {
-  _rotateQuote($(e.relatedTarget));
-}
-
 var slideQuote = function(e) {
   var isHovered = !!$('.marker-inner').filter(function() { return $(this).is(':hover'); }).length;
   if (!blockCarousel && !isHovered) {
       $('.marker-inner').tooltip('hide');
       setTimeout(function() {
+        $('.marker-inner').parent().addClass('quote-rotator');
         _rotateQuote($(e.relatedTarget));
       }, 200);
     }
+}
+
+var markerHoverTimeout;
+var hoverMarker = function(e) {
+  $('.marker-inner').parent().removeClass('quote-rotator');
+  $('.marker-inner')
+    .not($(e.currentTarget))
+    .tooltip('hide');
+  blockCarousel = true;
+  clearTimeout(markerHoverTimeout);
+  markerHoverTimeout = setTimeout(function() { blockCarousel = false; }, 4000);
 }
 
 $(document).ready(function() {
@@ -113,11 +121,8 @@ $(document).ready(function() {
 
   // Bind tooltips
   $('.marker-inner').tooltip();
-  $('.marker-inner').hover(function(e) {
-    $('.marker-inner').not($(e.currentTarget)).tooltip('hide');
-    blockCarousel = true;
-    setTimeout(function() { blockCarousel = false; }, 2000);
-  });
+  $('.marker-inner').hover(hoverMarker);
+  $('.marker-inner').parent().addClass('quote-rotator');
 
   // Bind modal open before it animates into view
   $('.modal').on('show.bs.modal', showModal);
@@ -130,12 +135,11 @@ $(document).ready(function() {
 
   // Fire up quotes after a second
   setTimeout(function() {
-    $('#quotes').animate({'opacity': 1}, 1000);
+    $('#quotes').animate({'opacity': 1}, 600);
     _rotateQuote($('#quotes').find('.carousel').find('.active'));
     $('#quotes').find('.carousel')
       .on('slide.bs.carousel', slideQuote)
-      .on('slid.bs.carousel', slidQuote);
-  }, 1000);
+  }, 800);
 
 })
 
