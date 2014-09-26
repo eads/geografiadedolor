@@ -28,7 +28,7 @@ body {
 
 .tooltip-inner {
   font-weight: 100;
-  font-size: 21px;
+  font-size: 19px;
 }
 
 #index-nav h1 {
@@ -180,7 +180,7 @@ body {
 }
 
 .quote-rotator .tooltip-inner {
-  font-size: 16px;
+  font-size: 13px;
 }
 
 /* Fade transition for carousel items */
