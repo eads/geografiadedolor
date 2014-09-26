@@ -27,7 +27,7 @@ body {
 }
 
 .tooltip-inner {
-  font-weight: 100;
+  font-weight: 400;
   font-size: 19px;
 }
 
@@ -172,11 +172,11 @@ body {
 
 .quote-rotator .fade {
    opacity: 0;
-   -webkit-transition: opacity .9s;
-      -moz-transition: opacity .9s;
-       -ms-transition: opacity .9s;
-        -o-transition: opacity .9s;
-           transition: opacity .9s;
+   -webkit-transition: opacity 1.3s;
+      -moz-transition: opacity 1.3s;
+       -ms-transition: opacity 1.3s;
+        -o-transition: opacity 1.3s;
+           transition: opacity 1.3s;
 }
 .quote-rotator .fade.in {
   opacity: 1;
@@ -184,6 +184,7 @@ body {
 
 .quote-rotator .tooltip-inner {
   font-size: 14px;
+  font-weight: 100;
 }
 
 /* Fade transition for carousel items */

@@ -1,3 +1,6 @@
 [submodule "_blueprint"]
 	path = _blueprint
 	url = https://github.com/newsapps/tarbell-template
+[submodule "fonts"]
+	path = fonts
+	url = git@github.com:eads/guardian-font.git
