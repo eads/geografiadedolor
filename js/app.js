@@ -121,6 +121,10 @@ $(document).ready(function() {
 
   // Bind tooltips
   $('.marker-inner').tooltip();
+  $('.nav-tool').tooltip({
+    delay: {show: 500, hide: 0},
+    html: true,
+  });
   $('.marker-inner').hover(hoverMarker);
   $('.marker-inner').parent().addClass('quote-rotator');
 

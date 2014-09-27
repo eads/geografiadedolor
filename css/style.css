@@ -26,9 +26,14 @@ body {
   padding: 0;
 }
 
-.tooltip-inner {
+#markers .tooltip-inner {
   font-weight: 400;
   font-size: 19px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+#markers .tooltip.top .tooltip-arrow {
+  border-top-color: rgba(255, 255, 255, 0.9);
 }
 
 #index-nav h1 {
@@ -154,7 +159,7 @@ body {
   height: 100%;
 }
 
-#fullscreen, #markers {
+#markers {
   display: none;
 }
 
@@ -163,28 +168,41 @@ body {
   cursor: pointer;
 }
 
-.share, .tools {
-  padding: 20px 0;
+.tools {
+  padding: 5px 0;
+}
+.tools.buttons {
   display: none;
 }
 
-.nav-share {
-  padding-left: 41px;
-  font-size: 18px;
-  line-height: 36px;
-  height: 36px;
-  margin: 0;
+.nav-tool {
+  display: inline-block;
+  line-height: 16px;
+  cursor: pointer;
 }
-.share .nav-share:first-child {
-  margin-bottom: 12px;
+.nav-tool .icon {
+  font-size: 24px;
+  line-height: 24px;
+  height: 24px;
+}
+.nav-share {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
 }
 .nav-share.twitter {
   background: url(../img/icons/twitter-white.png) no-repeat top left;
   background-size: contain;
+  margin-right: 10px;
 }
 .nav-share.facebook {
   background: url(../img/icons/facebook-white.png) no-repeat top left;
   background-size: contain;
+}
+.buttons #fullscreen {
+  margin-left: 8px;
+  margin-right: 28px;
 }
 
 
@@ -232,23 +250,29 @@ body {
     overflow: hidden;
   }
 
-  .share, .tools {
+  .tools { margin-left: 13%; }
+
+  .tools.buttons {
     display: block;
-    padding: 20px 0;
   }
+
   .share {
     margin-top: 10%;
   }
 
   #index-nav hr {
-    width: 75%;
+    width: 80%;
     margin: 0;
     border-color: #777;
   }
 
+  .tools { display: block; }
 
   #marker-list {
     display: none;
+  }
+  #index-nav h1 {
+    margin-bottom: 45px;
   }
 
   #index-nav h1 span {
@@ -317,7 +341,7 @@ body {
     opacity: 1;
   }
 
-  .quote-rotator .tooltip-inner {
+  #markers .quote-rotator .tooltip-inner {
     font-size: 14px;
     font-weight: 100;
   }
@@ -342,29 +366,6 @@ body {
   #index-nav {
     padding-left: 15px;
     width: 13%;
-  }
-
-  #fullscreen {
-    display: block;
-  }
-  .nav-tool {
-    line-height: 16px;
-    cursor: pointer;
-  }
-  .nav-tool .es {
-    font-size: 15px;
-  }
-  .nav-tool .en {
-    font-size: 12px;
-    color: #999;
-  }
-
-  .nav-tool .glyphicon {
-    float: left;
-    font-size: 15px;
-    line-height: 14px;
-    height: 32px;
-    margin-right: 7px;
   }
 
   #logo {
