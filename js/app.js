@@ -33,22 +33,35 @@ var sizeMap = function() {
   }
 }
 
-var requestFullScreen = function() {
-  var element = document.body;
+var startAudio = function() {
+  var soundtrack = document.getElementById('soundtrack');
 
-  // Supports most browsers and their versions.
-  var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
-
-  if (requestMethod) { // Native full screen.
-    requestMethod.call(element);
-  } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-    var wscript = new ActiveXObject("WScript.Shell");
-    if (wscript !== null) {
-      wscript.SendKeys("{F11}");
-    }
+  if (typeof soundtrack.loop == 'boolean') {
+    soundtrack.loop = true;
+  } else {
+    soundtrack.addEventListener('ended', function() {
+      this.currentTime = 0;
+      this.play();
+    }, false);
   }
+
+  $('#mute').on('click', toggleAudio);
+  soundtrack.play();
 }
 
+var toggleAudio = function() {
+  var soundtrack = document.getElementById('soundtrack');
+  if (soundtrack.paused)
+    soundtrack.play();
+  else
+    soundtrack.pause();
+}
+
+var requestFullScreen = function() {
+  if (BigScreen.enabled) {
+    BigScreen.toggle();
+  }
+}
 
 var showModal = function(e) {
     $(e.currentTarget).css({
@@ -113,17 +126,40 @@ var hoverMarker = function(e) {
   markerHoverTimeout = setTimeout(function() { blockCarousel = false; }, 1000);
 }
 
+var initializeQuotes = function() {
+  $('#quotes').animate({'opacity': 1}, 600);
+  _rotateQuote($('#quotes').find('.carousel').find('.active'));
+  $('#quotes').find('.carousel')
+    .on('slide.bs.carousel', slideQuote)
+}
+
+var toggleButtonState = function(e) {
+  var disabled = $(this).find('i').not('.active');
+  $(this).find('i').removeClass('active');
+  disabled.addClass('active');
+}
+
 $(document).ready(function() {
   // Size map on init and resize
   sizeMap();
   $(window).on('resize', sizeMap);
 
+  // Fire up quotes after a second
+  setTimeout(initializeQuotes, 800);
+  if ($(window).width() > 699) {
+    setTimeout(startAudio, 800);
+  }
+
   // Bind tooltips
   $('.marker-inner').tooltip();
-  $('.nav-tool').tooltip({
+  $('.nav-share, .nav-tool i').tooltip({
     delay: {show: 500, hide: 0},
     html: true,
   });
+
+  $('.buttons .nav-tool').on('click', toggleButtonState);
+
+  // Initialize hover behavior
   $('.marker-inner').hover(hoverMarker);
   $('.marker-inner').parent().addClass('quote-rotator');
 
@@ -135,14 +171,6 @@ $(document).ready(function() {
 
   // Bind fullscreen button behavior
   $('#fullscreen').on('click', requestFullScreen);
-
-  // Fire up quotes after a second
-  setTimeout(function() {
-    $('#quotes').animate({'opacity': 1}, 600);
-    _rotateQuote($('#quotes').find('.carousel').find('.active'));
-    $('#quotes').find('.carousel')
-      .on('slide.bs.carousel', slideQuote)
-  }, 800);
 
 })
 

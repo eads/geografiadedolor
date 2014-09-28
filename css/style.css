@@ -26,7 +26,7 @@ body {
   padding: 0;
 }
 
-#markers, #quotes {
+#markers, #quotes, #tools .buttons {
   display: none;
 }
 
@@ -254,10 +254,15 @@ body {
   }
 
   #tools .share, #tools .buttons {
+    display: block;
     width: auto;
     float: none;
     text-align: center;
   }
+
+  #tools .buttons i { display: none; }
+  #tools .buttons i.active { display: inline; }
+
 
   #markers .tooltip-inner {
     font-weight: 400;
