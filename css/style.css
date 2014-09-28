@@ -127,6 +127,11 @@ body {
   bottom: 0;
 }
 
+.espacio p {
+  font-size: 14px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+}
+
 #marker-list h2 {
   margin-top: 0;
   font-size: 20px;
@@ -143,7 +148,7 @@ body {
 }
 
 .video {
-    margin: 30px 0;
+    margin: 60px 0 30px 0;
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
@@ -199,10 +204,6 @@ body {
 .espacio .nav-share {
   height: 60px;
   width: 60px;
-}
-.espacio p {
-  font-size: 19px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
 }
 
 .nav-share.twitter {
@@ -413,5 +414,9 @@ body {
     width: auto;
     margin-left: 30px;
     margin-right: 30px;
+  }
+
+  .espacio p {
+    font-size: 17px;
   }
 }
