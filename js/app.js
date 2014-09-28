@@ -152,15 +152,29 @@ var initializeQuotes = function() {
     .on('slide.bs.carousel', slideQuote)
 }
 
+var exitPage = function(e) {
+  e.stopPropagation();
+  var href = this.href;
+  var soundtrack = document.getElementById('soundtrack');
+  $('.modal.in').animate({opacity: 0}, 900);
+  $('#index-map').animate({opacity: 0}, 900);
+  $(soundtrack).animate({volume: 0}, 800, function() {
+    window.location = href;
+  });
+  return false;
+}
+
 $(document).ready(function() {
   // Size map on init and resize
   sizeMap();
   $(window).on('resize', sizeMap);
 
+  $('#index-map').animate({opacity: 1}, 1500);
+
   // Fire up quotes after a second
-  setTimeout(initializeQuotes, 800);
   if ($(window).width() > 699) {
-    setTimeout(startAudio, 800);
+    setTimeout(initializeQuotes, 1800);
+    setTimeout(startAudio, 1800);
   }
 
   // Bind tooltips
@@ -184,6 +198,8 @@ $(document).ready(function() {
   BigScreen.onexit = fullscreenOff;
   BigScreen.onenter = fullscreenOn;
   $('#fullscreen').on('click', toggleFullscreen);
+
+  $('.conoce a').on('click', exitPage);
 
 });
 

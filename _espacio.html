@@ -2,39 +2,43 @@
 
 {% block css %}
 <style>
-  #espacio-canvas {
+ #espacio-canvas {
     background-image: url(../../img/espacios/espacio_{{ slug }}.jpg);
   }
 </style>
 {% endblock %}
 
 {% block content %}
+
 <div id="espacio-canvas"></div>
-  <div class="video">
-    <iframe src="//player.vimeo.com/video/{{ vimeo|int }}?badge=0&title=0&portrait=0&byline=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>   
+
+<div class="container espacio">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="video">
+        <iframe src="//player.vimeo.com/video/{{ vimeo|int }}?badge=0&title=0&portrait=0&byline=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>   
+      </div>
+    </div>
   </div>
-{% endblock %}
+  <div class="row">
+        <div class="share">
+          <a href="../../" class="nav-tool nav-share back" data-toggle="tooltip" data-placement="top" data-title="Casa / Home"></a>
+          <div class="nav-tool nav-share twitter" data-toggle="tooltip" data-placement="top" data-title="Twitter"></div>
+          <div class="nav-tool nav-share facebook" data-toggle="tooltip" data-placement="top" data-title="Facebook"></div>
+        </div>
+  </div>
 
-{% block scripts %}
-<script>
-
-// Use natural aspect ratio of map to set height and maintain
-// proper marker size
-var positionVideo = function() {
-  var height = $('.video iframe').height(),
-      windowHeight = $(window).height(),
-      top = ((windowHeight / 2) - (height / 2));
-
-  $('.video').css({
-    'top': (top > 0) ? top + 'px' : 0,
-  });
-}
-
-$(document).ready(function() {
-  // Size map on init, also resize
-  positionVideo();
-  $(window).on('resize', positionVideo);
-})
-
-</script>
+  <div class="row">
+    <div class="col-xs-6">
+      {% if story_es %}
+      <p>{{ story_es }}</p>
+      {% endif %}
+    </div>
+    <div class="col-xs-6">
+      {% if story_en %}
+      <p>{{ story_en }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -120,7 +120,7 @@ body {
 #espacio-canvas {
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -143,14 +143,15 @@ body {
 }
 
 .video {
-  position: absolute;
-  width: 59%;
-  left: 20%;
-  padding-bottom: 33%;
-  border: 2px solid #000;
-  -webkit-box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
-  box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
+    margin: 30px 0;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
 }
 .video iframe {
   position: absolute;
@@ -158,6 +159,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.container.espacio {
+  max-width: 900px;
+  position: relative;
+  z-index: 10;
 }
 
 .nav-tool {
@@ -184,6 +191,33 @@ body {
   background: url(../img/icons/facebook-white.png) no-repeat top left;
   background-size: contain;
   margin-left: 10px;
+}
+.espacio .share {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.espacio .nav-share {
+  height: 60px;
+  width: 60px;
+}
+.espacio p {
+  font-size: 19px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+}
+
+.nav-share.twitter {
+  background: url(../img/icons/twitter-white.png) no-repeat top left;
+  background-size: contain;
+}
+.nav-share.facebook {
+  background: url(../img/icons/facebook-white.png) no-repeat top left;
+  background-size: contain;
+  margin-left: 10px;
+}
+.nav-share.back {
+  background: url(../img/icons/back-white.png) no-repeat top left;
+  background-size: contain;
+  margin-right: 10px;
 }
 .buttons #fullscreen {
   margin-right: 28px;
@@ -225,18 +259,11 @@ body {
 }
 
 @media (min-width: 700px) {
-  body {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    overflow: hidden;
-  }
-
   #index-map {
     padding: 0;
+    opacity: 0;
   }
+  
   #project-title, #tools, #logo {
     padding: 0 0 0 10px;
   }
