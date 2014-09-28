@@ -51,15 +51,34 @@ var startAudio = function() {
 
 var toggleAudio = function() {
   var soundtrack = document.getElementById('soundtrack');
-  if (soundtrack.paused)
+  if (soundtrack.paused) {
+    soundtrack.volume = 0;
     soundtrack.play();
-  else
-    soundtrack.pause();
+    $(soundtrack).animate({volume: 1}, 800);
+    $('#mute .icon-volume-up').removeClass('active');
+    $('#mute .icon-volume-off').addClass('active');
+  } else {
+    $('#mute .icon-volume-off').removeClass('active');
+    $('#mute .icon-volume-up').addClass('active');
+    $(soundtrack).animate({volume: 0}, 500, function() {
+      soundtrack.pause();
+    });
+  }
 }
 
-var requestFullScreen = function() {
+var fullscreenOn = function() {
+  $('#fullscreen .icon-resize-full').removeClass('active');
+  $('#fullscreen .icon-resize-small').addClass('active');
+}
+
+var fullscreenOff = function() {
+  $('#fullscreen .icon-resize-small').removeClass('active');
+  $('#fullscreen .icon-resize-full').addClass('active');
+}
+
+var toggleFullscreen = function() {
   if (BigScreen.enabled) {
-    BigScreen.toggle();
+    BigScreen.toggle()
   }
 }
 
@@ -133,12 +152,6 @@ var initializeQuotes = function() {
     .on('slide.bs.carousel', slideQuote)
 }
 
-var toggleButtonState = function(e) {
-  var disabled = $(this).find('i').not('.active');
-  $(this).find('i').removeClass('active');
-  disabled.addClass('active');
-}
-
 $(document).ready(function() {
   // Size map on init and resize
   sizeMap();
@@ -157,8 +170,6 @@ $(document).ready(function() {
     html: true,
   });
 
-  $('.buttons .nav-tool').on('click', toggleButtonState);
-
   // Initialize hover behavior
   $('.marker-inner').hover(hoverMarker);
   $('.marker-inner').parent().addClass('quote-rotator');
@@ -170,7 +181,9 @@ $(document).ready(function() {
   $('.modal').on('shown.bs.modal', shownModal);
 
   // Bind fullscreen button behavior
-  $('#fullscreen').on('click', requestFullScreen);
+  BigScreen.onexit = fullscreenOff;
+  BigScreen.onenter = fullscreenOn;
+  $('#fullscreen').on('click', toggleFullscreen);
 
-})
+});
 
