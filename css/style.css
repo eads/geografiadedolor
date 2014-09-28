@@ -26,32 +26,33 @@ body {
   padding: 0;
 }
 
-#markers .tooltip-inner {
-  font-weight: 400;
-  font-size: 19px;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #000;
-}
-#markers .tooltip.top .tooltip-arrow {
-  border-top-color: rgba(255, 255, 255, 0.9);
+#markers, #quotes {
+  display: none;
 }
 
-#index-nav h1 {
-  margin-bottom: 15px;
+#index-map, #project-title, #tools, #logo {
+  position: static;
+  padding: 0 10px;
 }
-
-#index-nav h1 #line1 {
+#tools .share, #tools .buttons {
+  width: 50%;
+  float: left;
+  line-height: 40px;
+}
+#tools .buttons {
+  text-align: right;
+}
+#project-title {
+  text-align: center;
+}
+#project-title #line1 {
   font-weight: 100;
   font-style: italic;
 }
 
-#index-nav h1 #line2 {
+#project-title #line2 {
   font-weight: 600;
   text-transform: uppercase;
-}
-
-#index-map {
-  position: static;
 }
 
 .modal-backdrop.in {
@@ -159,22 +160,6 @@ body {
   height: 100%;
 }
 
-#markers {
-  display: none;
-}
-
-#quotes {
-  display: none;
-  cursor: pointer;
-}
-
-.tools {
-  padding: 5px 0;
-}
-.tools.buttons {
-  display: none;
-}
-
 .nav-tool {
   display: inline-block;
   line-height: 16px;
@@ -194,14 +179,13 @@ body {
 .nav-share.twitter {
   background: url(../img/icons/twitter-white.png) no-repeat top left;
   background-size: contain;
-  margin-right: 10px;
 }
 .nav-share.facebook {
   background: url(../img/icons/facebook-white.png) no-repeat top left;
   background-size: contain;
+  margin-left: 10px;
 }
 .buttons #fullscreen {
-  margin-left: 8px;
   margin-right: 28px;
 }
 
@@ -250,32 +234,47 @@ body {
     overflow: hidden;
   }
 
-  .tools { margin-left: 13%; }
-
-  .tools.buttons {
-    display: block;
-  }
-
-  .share {
-    margin-top: 10%;
-  }
-
-  #index-nav hr {
-    width: 80%;
-    margin: 0;
-    border-color: #777;
-  }
-
-  .tools { display: block; }
-
   #marker-list {
     display: none;
   }
-  #index-nav h1 {
+
+  #tools {
+    display: block;
+    position: absolute;
+    width: 8.5%;
+    top: 16.5%;
+    left: 2.5%;
+  }
+
+  #tools .share, #tools .buttons {
+    width: auto;
+    float: none;
+    text-align: center;
+  }
+
+  #markers .tooltip-inner {
+    font-weight: 400;
+    font-size: 19px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+  }
+  #markers .tooltip.top .tooltip-arrow {
+    border-top-color: rgba(255, 255, 255, 0.9);
+  }
+
+  #project-title {
+    margin-bottom: 15px;
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    width: 12%;
+  }
+
+  #project-title {
     margin-bottom: 45px;
   }
 
-  #index-nav h1 span {
+  #project-title span {
     display: block;
   }
 
@@ -343,7 +342,6 @@ body {
 
   #markers .quote-rotator .tooltip-inner {
     font-size: 14px;
-    font-weight: 100;
   }
 
   .marker {
@@ -361,11 +359,6 @@ body {
     height: 12px;
     border-radius: 50%;
     border: 6px solid #fff;
-  }
-
-  #index-nav {
-    padding-left: 15px;
-    width: 13%;
   }
 
   #logo {

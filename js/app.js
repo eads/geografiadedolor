@@ -7,7 +7,7 @@ var sizeMap = function() {
   var width = $('#index-map').width(),
       windowWidth = $(window).width(),
       windowHeight = $(window).height(),
-      aspect = 0.5625,
+      aspect = 0.57,
       height = width * aspect,
       top = ((windowHeight / 2) - (height / 2));
 
@@ -27,9 +27,9 @@ var sizeMap = function() {
       'width': 'auto',
     });
 
-    $("#line1").style('font-size', 'inherit');
-    $("#line2").style('font-size', 'inherit');
-    $("#index-nav h1").fitText();
+    $("#line1").css('font-size', '1em');
+    $("#line2").css('font-size', '1em');
+    $("#project-title").fitText();
   }
 }
 
@@ -56,18 +56,17 @@ var showModal = function(e) {
     });
     var windowHeight = $(window).height(),
         windowWidth = $(window).width(),
-        dialog = $(e.currentTarget).find('.modal-dialog');
+        mapHeight = $('#index-map').height(),
         header = $(e.currentTarget).find('.modal-header')
         button = $(e.currentTarget).find('.conoce'),
         victims = $(e.currentTarget).find('.victims'),
         images = $(e.currentTarget).find('img'),
-        fuzz = (windowWidth > 968) ? 280 : 160,
-        elementHeight = header.outerHeight() + victims.outerHeight() + button.outerHeight() + dialog.offset().top + fuzz;
-        maxHeight = windowHeight - elementHeight;
+        fuzz = 82, // Padding + margin of modal
+        elementHeight = windowHeight - header.outerHeight() - victims.outerHeight() - button.outerHeight() - fuzz;
 
-    if (windowWidth > 699 && windowWidth > windowHeight) {
+    if (windowWidth > 699) {
       images.css({
-        'height': maxHeight + 'px',
+        'height': elementHeight + 'px',
         'width': 'auto',
       });
     } else {
@@ -111,7 +110,7 @@ var hoverMarker = function(e) {
     .tooltip('hide');
   blockCarousel = true;
   clearTimeout(markerHoverTimeout);
-  markerHoverTimeout = setTimeout(function() { blockCarousel = false; }, 4000);
+  markerHoverTimeout = setTimeout(function() { blockCarousel = false; }, 1000);
 }
 
 $(document).ready(function() {

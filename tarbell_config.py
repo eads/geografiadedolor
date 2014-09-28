@@ -76,7 +76,7 @@ def espacio(slug):
 
 @blueprint.app_template_filter()
 def filter_quotes(arr):
-    ret = [item for item in arr if (item.get("quote_en") and item.get("quote_es"))]
+    ret = [item for item in arr if (item.get("quote_en") or item.get("quote_es"))]
     return ret
 
 @register_hook('generate')
