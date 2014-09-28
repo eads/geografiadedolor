@@ -166,14 +166,14 @@ body {
   cursor: pointer;
 }
 .nav-tool .icon {
-  font-size: 24px;
-  line-height: 24px;
-  height: 24px;
+  font-size: 20px;
+  line-height: 20px;
+  height: 20px;
 }
 .nav-share {
   display: inline-block;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   cursor: pointer;
 }
 .nav-share.twitter {
@@ -234,6 +234,13 @@ body {
     overflow: hidden;
   }
 
+  #index-map {
+    padding: 0;
+  }
+  #project-title, #tools, #logo {
+    padding: 0 0 0 10px;
+  }
+
   #marker-list {
     display: none;
   }
@@ -241,9 +248,9 @@ body {
   #tools {
     display: block;
     position: absolute;
-    width: 8.5%;
+    width: 11%;
     top: 16.5%;
-    left: 2.5%;
+    left: 0%;
   }
 
   #tools .share, #tools .buttons {
@@ -265,7 +272,7 @@ body {
   #project-title {
     margin-bottom: 15px;
     position: absolute;
-    left: 1%;
+    left: 0;
     top: 1%;
     width: 12%;
   }
