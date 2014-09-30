@@ -18,10 +18,13 @@ var shareLang = function(e) {
       url_parts = $(this).attr('href').split('?'),
       url = url_parts[0],
       params = parseQueryString(url_parts[1]);
-
-  params.text = $(this).data('share-' + lang);
-  this.href = url + '?' + $.param(params);
-  window.open(this.href, '_blank');
+  if (url_parts[1]) {
+    params.text = $(this).data('share-' + lang);
+    this.href = url + '?' + $.param(params);
+    window.open(this.href, '_blank');
+  } else {
+    window.open(this.href);
+  }
 }
 
 $('.nav-share').on('click', shareLang);
