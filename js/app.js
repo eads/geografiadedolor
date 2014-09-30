@@ -82,40 +82,6 @@ var toggleFullscreen = function() {
   }
 }
 
-var showModal = function(e) {
-    $(e.currentTarget).css({
-      'display': 'block'
-    });
-    var windowHeight = $(window).height(),
-        windowWidth = $(window).width(),
-        mapHeight = $('#index-map').height(),
-        header = $(e.currentTarget).find('.modal-header')
-        button = $(e.currentTarget).find('.conoce'),
-        victims = $(e.currentTarget).find('.victims'),
-        images = $(e.currentTarget).find('img'),
-        fuzz = 82, // Padding + margin of modal
-        elementHeight = windowHeight - header.outerHeight() - victims.outerHeight() - button.outerHeight() - fuzz;
-
-    if (windowWidth > 699) {
-      images.css({
-        'height': elementHeight + 'px',
-        'width': 'auto',
-      });
-    } else {
-      images.css({
-        'width': '100%',
-        'height': 'auto',
-      });
-    }
-}
-
-var shownModal = function(e) {
-  $(e.currentTarget).find('img.lazy').each(function() {
-    var src = $(this).data('original');
-    $(this).attr('src', src);
-  });
-}
-
 var _rotateQuote = function(el) {
   var state = $(el).data('state');
   $('#marker-' + state).find('.marker-inner').tooltip('show');
@@ -152,8 +118,13 @@ var initializeQuotes = function() {
     .on('slide.bs.carousel', slideQuote)
 }
 
+var clickTooltip = function(e) {
+  exitPage.call($(e.currentTarget).parent().find('a').get(0));
+}
+
 var exitPage = function(e) {
-  e.stopPropagation();
+  if (e)
+    e.stopPropagation();
   var href = this.href;
   var soundtrack = document.getElementById('soundtrack');
   $('.modal.in').animate({opacity: 0}, 900);
@@ -178,9 +149,10 @@ $(document).ready(function() {
   }
 
   // Bind tooltips
-  $('.marker-inner').tooltip();
+  $('.marker-inner').tooltip({ html: true });
+  $('.marker').on('click', '.tooltip', clickTooltip);
   $('.nav-share, .nav-tool i').tooltip({
-    delay: {show: 500, hide: 0},
+    delay: { show: 500, hide: 0 },
     html: true,
   });
 
@@ -188,18 +160,12 @@ $(document).ready(function() {
   $('.marker-inner').hover(hoverMarker);
   $('.marker-inner').parent().addClass('quote-rotator');
 
-  // Bind modal open before it animates into view
-  $('.modal').on('show.bs.modal', showModal);
-
-  // Bind modal when it is shown
-  $('.modal').on('shown.bs.modal', shownModal);
-
   // Bind fullscreen button behavior
   BigScreen.onexit = fullscreenOff;
   BigScreen.onenter = fullscreenOn;
   $('#fullscreen').on('click', toggleFullscreen);
 
   // Bind an exit animation
-  $('.conoce a').on('click', exitPage);
+  $('.marker a').on('click', exitPage);
 });
 

@@ -35,7 +35,7 @@ EXCLUDES = ["*.md", "requirements.txt"]
 
 # S3 bucket configuration
 S3_BUCKETS = {
-  'staging': 'recoveredfactory.net/geografiadeldolor',
+  'staging': 'recoveredfactory.net/geografiadeldolor-alt',
   'production': 'www.geografiadeldolor.com',
 }
 
