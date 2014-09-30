@@ -126,12 +126,12 @@ var blockCarousel = false;
 var slideQuote = function(e) {
   var isHovered = !!$('.marker-inner').filter(function() { return $(this).is(':hover'); }).length;
   if (!blockCarousel && !isHovered) {
-      $('.marker-inner').tooltip('hide');
-      setTimeout(function() {
-        $('.marker-inner').parent().addClass('quote-rotator');
-        _rotateQuote($(e.relatedTarget));
-      }, 200);
-    }
+    $('.marker-inner').tooltip('hide');
+    setTimeout(function() {
+      $('.marker-inner').parent().addClass('quote-rotator');
+      _rotateQuote($(e.relatedTarget));
+    }, 200);
+  }
 }
 
 var markerHoverTimeout;
