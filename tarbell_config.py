@@ -41,8 +41,8 @@ S3_BUCKETS = {
 
 # Default template variables
 DEFAULT_CONTEXT = {
-    'name': 'geografiadedolor',
-    'title': 'Geografía del Dolor'
+    'name': u'geografiadedolor',
+    'title': u'Geografía del Dolor'
 }
 
 # Blueprint
