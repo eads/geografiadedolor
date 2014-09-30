@@ -32,8 +32,8 @@
   {% for marker in markers %}
     {% set slug = marker.state|slugify|lower %}
   	<div id="marker-{{ slug }}" class="marker" style="top: {{ marker.y }}%; left: {{ marker.x }}%">
-     <a href="espacio/{{ slug }}/" class="marker-inner" data-toggle="tooltip" data-placement="top" data-title="<img src='img/{{ slug }}/{{ slug }}-1.jpg'><h3>{{ marker.state }}</h3><p>{{ marker.victim }}</p>" ></a>
-    </div>
+     <a href="espacio/{{ slug }}.html" class="marker-inner" data-toggle="tooltip" data-placement="top" data-title="<img src='img/{{ slug }}/{{ slug }}-1.jpg'><h3>{{ marker.state }}</h3><p>{{ marker.victim }}</p>" ></a>
+    </div
 	{% endfor %}
   </div>
 
