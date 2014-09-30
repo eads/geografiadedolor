@@ -11,20 +11,17 @@ parseQueryString = function (query) {
    return params;
 };
 
-var shareLang = function(e) {
+var shareTwitterLang = function(e) {
   e.stopPropagation();
   var langFull = navigator.language || navigator.userLanguage,
       lang = langFull.slice(0, 2),
       url_parts = $(this).attr('href').split('?'),
       url = url_parts[0],
       params = parseQueryString(url_parts[1]);
-  if (url_parts[1]) {
-    params.text = $(this).data('share-' + lang);
-    this.href = url + '?' + $.param(params);
-    window.open(this.href, '_blank');
-  } else {
-    window.open(this.href);
-  }
+
+  params.text = $(this).data('share-' + lang);
+  this.href = url + '?' + $.param(params);
+  window.open(this.href, '_blank');
 }
 
-$('.nav-share').on('click', shareLang);
+$('.nav-share.twitter').on('click', shareTwitterLang);
