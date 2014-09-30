@@ -199,7 +199,7 @@ $(document).ready(function() {
   BigScreen.onenter = fullscreenOn;
   $('#fullscreen').on('click', toggleFullscreen);
 
+  // Bind an exit animation
   $('.conoce a').on('click', exitPage);
-
 });
 
