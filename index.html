@@ -11,8 +11,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="share">
-          <div class="nav-tool nav-share twitter" data-toggle="tooltip" data-placement="top" data-title="Twitter"></div>
-          <div class="nav-tool nav-share facebook" data-toggle="tooltip" data-placement="top" data-title="Facebook"></div>
+          <a class="nav-tool nav-share twitter" data-toggle="tooltip" data-placement="top" data-title="Twitter" data-share-en="{{ twitter_msg_en }}" data-share-es="{{ twitter_msg_es }}" target="_blank" href="http://twitter.com/share?url=http://{{ ROOT_URL }}/{{ PATH }}&text={{ twitter_msg_es }}"></a>
+          <a class="nav-tool nav-share facebook" data-toggle="tooltip" data-placement="top" data-title="Facebook" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://{{ ROOT_URL }}/{{ PATH }}"></a>
         </div>
         <div class="buttons">
           <div id="fullscreen" class="nav-tool">
