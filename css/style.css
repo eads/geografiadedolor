@@ -67,7 +67,6 @@ body {
 
 .espacio p {
   font-size: 14px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
 }
 
 #marker-list a {
@@ -99,12 +98,10 @@ body {
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-}
-.video, .gallery {
-    border: 1px solid rgba(255, 255, 255, 0.5);
     -webkit-box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
     -moz-box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
     box-shadow: 3px 3px 14px 4px rgba(0,0,0,0.75);
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 .video iframe {
   position: absolute;
@@ -112,6 +109,22 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.story {
+	-webkit-box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.7);
+	box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0,0,0, 0.4);
+  padding: 16px;
+}
+.story .row {
+  display: table;
+}
+.story .col-md-5, .story .col-md-7 {
+  display: table-cell;
+  float: none;
+  vertical-align: middle;
 }
 
 .container.espacio {
@@ -391,7 +404,7 @@ body {
 
   .container.espacio {
     position: absolute;
-    width: 60%;
+    width: 70%;
     top: 14%;
     left: 13%;
     padding-bottom: 150px;

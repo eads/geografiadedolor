@@ -14,7 +14,7 @@
 
 <div class="container espacio">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-8 col-md-offset-2">
       <div class="video">
         <iframe src="//player.vimeo.com/video/{{ vimeo|int }}?badge=0&title=0&portrait=0&byline=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>   
       </div>
@@ -28,40 +28,41 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-7">
-    {% set slug = state|slugify|lower %}
-    {% if gallery_size > 1 %}
-    <div id="{{ slug }}-gallery" class="gallery carousel slide" data-ride="carousel" data-interval="12000">
-      <div class="carousel-inner">
-        {% for x in range(1, gallery_size + 1) %}
-        <div class="item {% if x == 1 %}active{% endif %}">
-          <img class="img-responsive" src="{{ relative_root }}img/{{ slug }}/{{ slug }}-{{ x }}.jpg" />
+  <div class="story">
+    <div class="row">
+      <div class="col-md-7">
+      {% set slug = state|slugify|lower %}
+      {% if gallery_size > 1 %}
+      <div id="{{ slug }}-gallery" class="gallery carousel slide" data-ride="carousel" data-interval="12000">
+        <div class="carousel-inner">
+          {% for x in range(1, gallery_size + 1) %}
+          <div class="item {% if x == 1 %}active{% endif %}">
+            <img class="img-responsive" src="{{ relative_root }}img/{{ slug }}/{{ slug }}-{{ x }}.jpg" />
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
+        <a class="left carousel-control" href="#{{ slug }}-gallery" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#{{ slug }}-gallery" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
       </div>
-      <a class="left carousel-control" href="#{{ slug }}-gallery" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-      <a class="right carousel-control" href="#{{ slug }}-gallery" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-      </a>
-    </div>
-    {% else %}
-      <img class="gallery img-responsive" src="{{ relative_root }}img/{{ slug }}/{{ slug }}-1.jpg" />
-    {% endif %}
-    </div>
-    <div class="col-md-5">
-      {% if story_es %}
-      <p>{{ story_es }}</p>
+      {% else %}
+        <img class="gallery img-responsive" src="{{ relative_root }}img/{{ slug }}/{{ slug }}-1.jpg" />
       {% endif %}
-      <hr />
-      {% if story_en %}
-      <p>{{ story_en }}</p>
-      {% endif %}
+      </div>
+      <div class="col-md-5">
+        {% if story_es %}
+        <p>{{ story_es }}</p>
+        {% endif %}
+        <hr />
+        {% if story_en %}
+        <p>{{ story_en }}</p>
+        {% endif %}
+      </div>
     </div>
   </div>
-
 
 </div>
 {% endblock %}
