@@ -1,4 +1,3 @@
-
 // Use natural aspect ratio of map to set height and maintain
 // proper marker size
 var sizeMap = function() {
