@@ -68,7 +68,7 @@ def espacio(slug):
         abort(404)
 
     extra_context = {
-        "relative_root": "../",
+        "relative_root": "../../",
         "PATH": "%s.html" % slug,
     }
     extra_context.update(markers[slug])
