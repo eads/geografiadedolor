@@ -37,6 +37,27 @@
   {% endfor %}
   </div>
 
+  <div id="marker-list">
+    <div class="container">
+      {% for marker in markers %}
+      {% set slug = marker.state|slugify|lower %}
+      <div class="row">
+        <a href="espacio/{{ slug }}/">
+          <div class="col-xs-5">
+            <img class="img-responsive" src="img/{{ slug }}/{{ slug }}-1.jpg" />
+          </div>
+          <div class="col-xs-7">
+            <h2>{{ marker.victim }} <i class="glyphicon glyphicon-chevron-right"></i></h2>
+            <p>
+              {{ marker.state }}
+            </p>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
   <div id="logo">
     <a href="http://sacbeproducciones.com/"><img src="img/sacbe-logo.png" class="img-responsive" /></a>
   </div>

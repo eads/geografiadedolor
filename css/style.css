@@ -70,9 +70,14 @@ body {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
 }
 
+#marker-list a {
+  display: block;
+  color: #fff;
+}
+
 #marker-list h2 {
   margin-top: 0;
-  font-size: 20px;
+  font-size: 19px;
 }
 
 #marker-list .row {
@@ -80,6 +85,9 @@ body {
 }
 #marker-list .col-xs-5 {
   padding-right: 0;
+}
+#marker-list p {
+  font-size: 15px;
 }
 #marker-list i {
   font-size: 12px;
