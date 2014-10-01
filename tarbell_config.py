@@ -88,16 +88,16 @@ def create_espacio_pages(site, output_root, quiet=False):
     markers = data["markers"]
     root_path = os.path.join(os.path.realpath(output_root), 'espacio/')
 
-    if not os.path.exists(root_path):
-        os.makedirs(root_path)
-
     for marker in markers:
         slug = slughifi(marker["state"].lower())
-        page_path = os.path.join(root_path, '{0}.html'.format(slug))
+        page_path = os.path.join(root_path, slug)
+        if not os.path.exists(page_path):
+            os.makedirs(page_path)
+        index_path = os.path.join(page_path, 'index.html')
         if not quiet:
             puts("Writing {0}/espacio/{1}.html".format(output_root, slug))
         with site.app.test_client() as client:
             resp = client.get('/espacio/{0}/'.format(slug))
-        f = open(page_path, 'w')
+        f = open(index_path, 'w')
         f.write(resp.data)
         f.close()
