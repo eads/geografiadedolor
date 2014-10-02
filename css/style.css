@@ -49,11 +49,11 @@ h1, h2, h3, h4, h5, h6 {
 .preview .date {
   font-weight: 600;
   color: #5acdfa;
-  font-size: 90px;
+  font-size: 60px;
 }
 
 .preview .url {
-  font-size: 60px;
+  font-size: 36px;
 }
 
 #index-nav h1 {
@@ -156,10 +156,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .video {
-  position: absolute;
-  width: 55%;
-  left: 25%;
-  padding-bottom: 31%;
+  position: relative;
+  width: 80%;
+  left: 10%;
+  padding-bottom: 45%;
 }
 .video iframe {
   position: absolute;
