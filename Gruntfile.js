@@ -36,8 +36,12 @@ module.exports = function(grunt) {
     },
     watch: {
       styles: {
-        files: ['src/css/**/*.css', 'src/js/**/*.js'], // which files to watch
-        tasks: ['less', 'concat', 'uglify'],
+        files: ['src/css/**/*.css'],
+        tasks: ['cssmin'],
+      },
+      scripts: {
+        files:['src/js/**/*.js'],
+        tasks: ['concat', 'uglify'],
       }
     }
   });
