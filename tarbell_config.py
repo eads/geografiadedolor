@@ -11,10 +11,11 @@ NAME = "geografiadedolor"
 TITLE = "Geografia de dolor"
 
 # Google spreadsheet key
-SPREADSHEET_KEY = "1_Duj8Upko57n-AXHFQCa_vy3zaJx19hjvnwPuX5otJo"
+#SPREADSHEET_KEY = "1_Duj8Upko57n-AXHFQCa_vy3zaJx19hjvnwPuX5otJo"
+CONTEXT_SOURCE_FILE="_spreadsheet.xlsx"
 
 # Exclude these files from publication
-EXCLUDES = ["*.md", "requirements.txt"]
+EXCLUDES = ["*.md", "requirements.txt", "src/*"]
 
 # Spreadsheet cache lifetime in seconds. (Default: 4)
 # SPREADSHEET_CACHE_TTL = 4 # Crappy connection aqui
@@ -47,14 +48,14 @@ DEFAULT_CONTEXT = {
 
 # Blueprint
 import os
+import sh
+
+from clint.textui import puts, colored
 from flask import Blueprint, abort, g
+from tarbell.hooks import register_hook
 from tarbell.slughifi import slughifi
 
-from clint.textui import puts
-from tarbell.hooks import register_hook
-
 blueprint = Blueprint('geografiadeldolor', __name__)
-
 
 @blueprint.route('/espacio/<slug>/')
 def espacio(slug):
@@ -101,3 +102,68 @@ def create_espacio_pages(site, output_root, quiet=False):
         f = open(index_path, 'w')
         f.write(resp.data)
         f.close()
+
+@register_hook('server_start')
+def grunt_watch(site):
+    """Start grunt watch"""
+    grunt = sh.grunt.bake('watch', _cwd=site.path, _bg=True)
+    proc = grunt()
+    site.grunt_pid = proc.pid
+    puts("Starting Grunt watch (pid: {0})".format(colored.yellow(proc.pid)))
+
+
+@register_hook('server_stop')
+def grunt_stop(site):
+    """Stop grunt watch"""
+    puts("Stopping Grunt watch")
+    sh.kill(site.grunt_pid)
+
+
+def setup_grunt(site, git):
+    """Set up grunt"""
+    os.chdir(site.path)
+    puts("Installing node packages")
+    print(sh.npm("install", _cwd=site.path))
+    puts("Running grunt")
+    print(sh.grunt(_cwd=site.path))
+
+
+@register_hook('newproject')
+def newproject_grunt(site, git):
+    """Copy grunt files to new project and run setup"""
+    blueprint_path = os.path.join(site.path, '_blueprint')
+
+    puts("Copying Gruntfile.js to new project")
+    shutil.copyfile(os.path.join(blueprint_path, 'Gruntfile.js'),
+                    os.path.join(site.path, 'Gruntfile.js'))
+
+    puts("Copying package.json to new project")
+    shutil.copyfile(os.path.join(blueprint_path, 'package.json'),
+                    os.path.join(site.path, 'package.json'))
+
+    puts(git.add("Gruntfile.js"))
+    puts(git.add("package.json"))
+    puts(git.commit(m='Add Gruntfile.js and package.json'))
+
+    _mkdir(os.path.join(site.path, 'src'))
+
+    puts("Copying default assets")
+    _mkdir(os.path.join(site.path, 'src/less'))
+    shutil.copyfile(os.path.join(blueprint_path, 'src/less/main.less'),
+                    os.path.join(site.path, 'src/less/main.less'))
+
+    _mkdir(os.path.join(site.path, 'src/js'))
+    shutil.copyfile(os.path.join(blueprint_path, 'src/js/app.js'),
+                    os.path.join(site.path, 'src/js/app.js'))
+
+    puts(git.add("src/js/app.js"))
+    puts(git.add("src/less/main.less"))
+    puts(git.commit(m='Add default javascript and LESS assets'))
+
+    setup_grunt(site, git)
+
+
+@register_hook('install')
+def install_grunt(site, git):
+    """Run grunt setup on project install"""
+    setup_grunt(site, git)

@@ -5,14 +5,10 @@
 {% block footer %}{% endblock %}
 
 {% block library_scripts %}
-{{ super() }}
-<script type="text/javascript" src="{{ relative_root }}js/jquery.fittext.min.js"></script>
-<script type="text/javascript" src="{{ relative_root }}js/jquery.lazyload.min.js"></script>
-<script type="text/javascript" src="{{ relative_root }}js/multilingual_social_media.js"></script>
+<script type="text/javascript" src="{{ relative_root }}js/geografia.min.js"></script>
 {% endblock %}
 
 {% block library_css %}
-{{ super() }}
 <link rel="stylesheet" type="text/css" href="{{ relative_root }}fonts/icons/css/geografia.css" />
-<link rel="stylesheet" type="text/css" href="{{ relative_root }}css/style.css" />
+<link rel="stylesheet" type="text/css" href="{{ relative_root }}css/geografia.min.css" />
 {% endblock library_css %}
