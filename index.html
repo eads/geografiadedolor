@@ -63,7 +63,7 @@
   </div>
 
   <div id="quotes">
-    <div id="quote-carousel" class="carousel slide" data-ride="carousel" data-interval="8000">
+    <div id="quote-carousel" class="carousel slide" data-ride="carousel" data-interval="11000">
       <div class="carousel-inner">
         {% set quotes = markers|filter_quotes %}
         {% for marker in quotes %}
@@ -72,11 +72,11 @@
           <div class="item-table-wrapper">
             <a class="item-cell-wrapper" href="espacio/{{ slug }}/">
               {% if marker.quote_es %}
-              <p>&ldquo;{{ marker.quote_es }}&rdquo;</p>
+              <p>{{ marker.quote_es|process_text }}</p>
               {% endif %}
               <p class="state">&mdash; {{ marker.state }} &mdash;</p>
               {% if marker.quote_en %}
-              <p>&ldquo;{{ marker.quote_en }}&rdquo;</p>
+              <p>{{ marker.quote_en|process_text }}</p>
               {% endif %}
             </a>
           </div>

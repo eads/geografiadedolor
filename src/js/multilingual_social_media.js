@@ -22,6 +22,7 @@ var shareTwitterLang = function(e) {
   params.text = $(this).data('share-' + lang);
   this.href = url + '?' + $.param(params);
   window.open(this.href, '_blank');
+  return false;
 }
 
 $('.nav-share.twitter').on('click', shareTwitterLang);
