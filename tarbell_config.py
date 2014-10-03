@@ -11,11 +11,11 @@ NAME = "geografiadedolor"
 TITLE = "Geografia de dolor"
 
 # Google spreadsheet key
-#SPREADSHEET_KEY = "1_Duj8Upko57n-AXHFQCa_vy3zaJx19hjvnwPuX5otJo"
-CONTEXT_SOURCE_FILE="_spreadsheet.xlsx"
+SPREADSHEET_KEY = "1_Duj8Upko57n-AXHFQCa_vy3zaJx19hjvnwPuX5otJo"
+#CONTEXT_SOURCE_FILE="_spreadsheet.xlsx"
 
 # Exclude these files from publication
-EXCLUDES = ["*.md", "requirements.txt", "src/*"]
+EXCLUDES = ["*.md", "requirements.txt", "src/*", "node_modules"]
 
 # Spreadsheet cache lifetime in seconds. (Default: 4)
 # SPREADSHEET_CACHE_TTL = 4 # Crappy connection aqui
