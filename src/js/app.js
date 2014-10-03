@@ -33,19 +33,28 @@ var sizeMap = function() {
 }
 
 var startAudio = function() {
-  var soundtrack = document.getElementById('soundtrack');
+  var soundtrack = document.getElementById('soundtrack'),
+      soundtrackOff = $.cookie('geografia_soundtrack_off') == 'true';
 
-  if (typeof soundtrack.loop == 'boolean') {
-    soundtrack.loop = true;
-  } else {
-    soundtrack.addEventListener('ended', function() {
-      this.currentTime = 0;
-      this.play();
-    }, false);
+  if (soundtrack) {
+    if (!soundtrackOff) {
+      if (typeof soundtrack.loop == 'boolean') {
+        soundtrack.loop = true;
+      } else {
+        soundtrack.addEventListener('ended', function() {
+          this.currentTime = 0;
+          this.play();
+        }, false);
+      }
+      soundtrack.play();
+    } else {
+      $('#mute .icon-volume-off').removeClass('active');
+      $('#mute .icon-volume-up').addClass('active');
+      soundtrack.paused = true;
+    }
+
+    $('#mute').on('click', toggleAudio);
   }
-
-  $('#mute').on('click', toggleAudio);
-  soundtrack.play();
 }
 
 var toggleAudio = function() {
@@ -56,9 +65,11 @@ var toggleAudio = function() {
     $(soundtrack).animate({volume: 1}, 800);
     $('#mute .icon-volume-up').removeClass('active');
     $('#mute .icon-volume-off').addClass('active');
+    $.cookie('geografia_soundtrack_off', 'false');
   } else {
     $('#mute .icon-volume-off').removeClass('active');
     $('#mute .icon-volume-up').addClass('active');
+    $.cookie('geografia_soundtrack_off', 'true');
     $(soundtrack).animate({volume: 0}, 500, function() {
       soundtrack.pause();
     });
@@ -143,8 +154,8 @@ $(document).ready(function() {
 
   // Fire up quotes after a second
   if ($(window).width() > 699) {
+    startAudio();
     setTimeout(initializeQuotes, 1800);
-    setTimeout(startAudio, 1800);
   }
 
   // Bind tooltips

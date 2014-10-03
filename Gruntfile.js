@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       },
       dist: {
         // the files to concatenate
-        src: ['src/js/jquery.js', 'src/js/bootstrap.js', 'src/js/jquery.fittext.js', 'src/js/bigscreen.js', 'src/js/multilingual_social_media.js', 'src/js/app.js'],
+        src: ['src/js/jquery.js', 'src/js/bootstrap.js', 'src/js/jquery.fittext.js', 'src/js/jquery.cookie.js', 'src/js/bigscreen.js', 'src/js/multilingual_social_media.js', 'src/js/app.js'],
         // the location of the resulting JS file
         dest: 'js/<%= pkg.name %>.js'
       }
