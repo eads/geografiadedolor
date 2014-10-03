@@ -69,6 +69,20 @@ body {
   font-size: 14px;
 }
 
+.espacio h1 {
+  text-align: center;
+  font-size: 28px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+.espacio h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 8px;
+}
+.gallery {
+  margin-bottom: 14px;
+}
+
 #marker-list a {
   display: block;
   color: #fff;
@@ -93,7 +107,7 @@ body {
 }
 
 .video {
-    margin: 200px 0 30px 0;
+    margin: 30px 0 30px 0;
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
@@ -117,14 +131,6 @@ body {
 	box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.7);
   background-color: rgba(0,0,0, 0.4);
   padding: 16px;
-}
-.story .row {
-  display: table;
-}
-.story .col-md-5, .story .col-md-7 {
-  display: table-cell;
-  float: none;
-  vertical-align: middle;
 }
 
 .container.espacio {
@@ -246,28 +252,18 @@ body {
   #tools .buttons i { display: none; }
   #tools .buttons i.active { display: inline; }
 
-
   .marker .tooltip-inner {
     font-weight: 400;
     font-size: 14px;
     background-color: rgba(0, 0, 0, 0.85);
-    width: 213px;
+    width: 180px;
   }
   .marker .tooltip.top .tooltip-arrow {
     border-top-color: rgba(0, 0, 0, 0.85);
   }
-  .marker .tooltip-inner img {
-    margin-top: 5px;
-    max-width: 100%;
-    height: 120px;
-  }
-
   .marker.quote-rotator .tooltip-inner {
-    font-weight: 400;
-    font-size: 13px;
     background-color: rgba(255, 255, 255, 0.85);
     color: #000;
-    width: 150px;
   }
   .marker .tooltip-inner p {
     color: #ccc;
@@ -277,12 +273,6 @@ body {
     line-height: 18px;
     margin-top: 5px;
     margin-bottom: 5px;
-  }
-  .marker.quote-rotator h3 {
-    font-size: 15px;
-  }
-  .marker.quote-rotator .tooltip-inner img {
-    display: none;
   }
   .marker.quote-rotator .tooltip.top .tooltip-arrow {
     border-top-color: rgba(255, 255, 255, 0.85);
@@ -401,12 +391,24 @@ body {
   .espacio p {
     font-size: 15px;
   }
+  .gallery {
+    margin-bottom: 0;
+  }
 
   .container.espacio {
     position: absolute;
     width: 70%;
-    top: 14%;
+    top: 5%;
     left: 13%;
     padding-bottom: 150px;
   }
+  .story .row {
+    display: table;
+  }
+  .story .col-md-5, .story .col-md-7 {
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+  }
+
 }
