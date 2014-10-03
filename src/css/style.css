@@ -75,10 +75,10 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 .espacio h2 {
-  font-weight: 100;
   text-align: center;
   font-size: 16px;
-  margin-top: 8px;
+  margin-top: 0px;
+  margin-bottom: 16px;
 }
 .gallery {
   margin-bottom: 14px;

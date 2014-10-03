@@ -18,7 +18,8 @@
       <h1>{{ victim }}</h1>
       <h2>{{ state }}</h2>
     </div>
-  <div>
+  </div>
+  {% if vimeo %}
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="video">
@@ -26,6 +27,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
   <div class="row">
     <div class="share">
       <a href="{{ relative_root }}" class="nav-tool nav-share back" data-toggle="tooltip" data-placement="top" data-title="Casa / Home"></a>
@@ -62,7 +64,7 @@
         {% if story_es %}
         <p>{{ story_es }}</p>
         {% endif %}
-        <hr />
+        {% if story_es and story_en %}<hr />{% endif %}
         {% if story_en %}
         <p>{{ story_en }}</p>
         {% endif %}
