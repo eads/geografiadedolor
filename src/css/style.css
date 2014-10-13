@@ -40,9 +40,8 @@ body {
   padding: 0 10px;
 }
 #tools .share, #tools .buttons {
-  width: 50%;
-  float: left;
   line-height: 40px;
+  text-align: center;
 }
 #tools .buttons {
   text-align: right;
@@ -223,7 +222,25 @@ body {
 }
 
 .modal-content {
-  background-color: rgba(15,15,15,.8);
+  background-color: #000;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-header {
+  padding: 5px 20px;
+}
+
+.modal-header .close {
+  color: #fff;
+  text-shadow: none;
+  font-size: 35px;
+  opacity: 0.6;
+}
+.modal-header .close:hover {
+  opacity: 1;
 }
 
 #logo a {
@@ -234,19 +251,36 @@ body {
   margin-top: 10px;
 }
 
-#credits li {
-  list-style-type: none;
-  margin-left: 0;
+#logo img {
+  max-width: 100%;
+}
+
+#credits {
+  font-size: 18px;
+}
+
+#credits ul {
   padding-left: 0;
 }
 
+#credits li {
+  list-style-type: none;
+  margin-bottom: 15px;
+}
+
 #credits strong {
+  color: #5acdfa;
+  font-weight: 400;
 }
 
 @media (min-width: 700px) {
   #index-map {
     padding: 0;
     opacity: 0;
+  }
+
+  .modal-content {
+    background-color: rgba(15,15,15,.8);
   }
 
   .video {
