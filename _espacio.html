@@ -1,12 +1,13 @@
 {% extends "_geografia_base.html" %}
+{% set slug = state|slugify|lower %}
 
-{% block css %}
-<style>
- #espacio-canvas {
-    background-image: url({{ relative_root }}img/espacios/espacio_{{ slug }}.jpg);
-  }
-</style>
-{% endblock %}
+{% block opengraph %} 
+<meta property="og:url" content="http://{{ ROOT_URL }}/espacio/{{ slug }}/" />
+<meta property="og:title" content="{{ title }}: {{ victim }} ({{ state }})" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="http://{{ ROOT_URL }}/img/{{ slug }}/{{ slug }}-1.jpg" />
+<meta property="og:description" content="{{ quote_es }} / {{ quote_en }}" />
+{% endblock opengraph %}
 
 {% block content %}
 
@@ -31,15 +32,14 @@
   <div class="row">
     <div class="share">
       <a href="{{ relative_root }}" class="nav-tool nav-share back" data-toggle="tooltip" data-placement="top" data-title="Home"></a>
-      <a class="nav-tool nav-share twitter" data-toggle="tooltip" data-placement="top" data-title="Twitter" data-share-en="{{ twitter_msg_en }}" data-share-es="{{ twitter_msg_es }}" target="_blank" href="http://twitter.com/share?url=http://{{ ROOT_URL }}/{{ PATH }}&text={{ twitter_msg_es }}"></a>
-      <a class="nav-tool nav-share facebook" data-toggle="tooltip" data-placement="top" data-title="Facebook" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://{{ ROOT_URL }}/{{ PATH }}"></a>
+      <a class="nav-tool nav-share twitter" data-toggle="tooltip" data-placement="top" data-title="Twitter" data-share-en="{{ twitter_msg_en }}" data-share-es="{{ twitter_msg_es }}" target="_blank" href="http://twitter.com/share?url=http%3A%2F%2F{{ ROOT_URL }}%2Fespacio%2F{{ slug }}%2f&text={{ twitter_msg_es }}"></a>
+      <a class="nav-tool nav-share facebook" data-toggle="tooltip" data-placement="top" data-title="Facebook" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F{{ ROOT_URL }}%2Fespacio%2F{{ slug }}%2f"></a>
     </div>
   </div>
 
   <div class="story">
     <div class="row">
       <div class="col-md-7">
-      {% set slug = state|slugify|lower %}
       {% if gallery_size > 1 %}
       <div id="{{ slug }}-gallery" class="gallery carousel slide" data-ride="carousel" data-interval="12000">
         <div class="carousel-inner">
@@ -73,4 +73,12 @@
   </div>
 
 </div>
+{% endblock %}
+
+{% block css %}
+<style>
+ #espacio-canvas {
+    background-image: url({{ relative_root }}img/espacios/espacio_{{ slug }}.jpg);
+  }
+</style>
 {% endblock %}
