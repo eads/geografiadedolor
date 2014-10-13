@@ -59,6 +59,7 @@
   </div>
 
   <div id="logo">
+    <a href="#credits" data-toggle="modal" data-target="#credits">Créditos</a>
     <a href="http://sacbeproducciones.com/"><img src="img/sacbe-logo.png" class="img-responsive" /></a>
   </div>
 
@@ -84,8 +85,26 @@
         {% endfor %}
       </div>
     </div>
+  </div>
+
 </div>
 
+<div id="credits" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Créditos</h4>
+      </div>
+      <div class="modal-body">
+        <ul>
+          {% for credit in credits %}
+          <li><strong>{{ credit.role }}</strong> {{ credit.people|process_text }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <audio id="soundtrack" src="img/audio/geografia.mp3"></audio>
